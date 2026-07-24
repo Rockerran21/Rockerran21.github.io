@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranjan Marasini — A Profile in Four Parts</title>
+<meta name="description" content="A long-form profile of Ranjan Marasini — AI &amp; Cloud Engineer and Security Researcher. #15 in the world, Wiz Ultimate Cloud Security Championship. He builds LLM agents you can trust — and breaks the cloud they run on.">
+<meta property="og:title" content="Ranjan Marasini — A Profile in Four Parts">
+<meta property="og:description" content="AI &amp; Cloud Engineer · Security Researcher. #15 in the world — Wiz Ultimate Cloud Security Championship. 12/12 challenges solved.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#faf6ef">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23faf6ef'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='32' font-style='italic' fill='%23002fa7' text-anchor='middle'%3E15%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BYLINE — a light editorial profile
+   Paper: oatmeal. Ink: near-black. Accent: International Klein Blue.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:      #faf6ef;
+  --paper-2:    #f3ecdd;
+  --ink:        #171610;
+  --ink-2:      #59564a;
+  --ghost:      rgba(23, 22, 16, 0.05);
+  --line:       rgba(23, 22, 16, 0.22);
+  --line-soft:  rgba(23, 22, 16, 0.1);
+  --ikb:        #002fa7;
+
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans:  "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --ease-out:   cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-inout: cubic-bezier(0.77, 0, 0.18, 1);
+
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.75rem;
+  --s-4: 2.75rem;
+  --s-5: 4.5rem;
+  --s-6: 7rem;
+  --s-7: 10.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  scrollbar-color: rgba(23,22,16,0.55) var(--paper);
+  scrollbar-width: thin;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+
+/* --- bespoke scrollbar (WebKit) --- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb {
+  background: rgba(23,22,16,0.5);
+  border: 3px solid var(--paper);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ikb); }
+
+::selection { background: var(--ikb); color: #f6f1e5; }
+::-moz-selection { background: var(--ikb); color: #f6f1e5; }
+
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--ikb);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* --- paper grain --- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
+/* --- reading progress hairline --- */
+.progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--ikb);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 98;
+}
+
+/* --- layout primitives --- */
+.container {
+  width: min(100% - clamp(2.5rem, 8vw, 7rem), 1180px);
+  margin-inline: auto;
+}
+
+.rule {
+  height: 1px;
+  width: 100%;
+  background: var(--line);
+}
+.rule--soft { background: var(--line-soft); }
+
+.smallcaps {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.mask-line {
+  display: block;
+  will-change: transform;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px; left: 1rem;
+  background: var(--ikb);
+  color: #f6f1e5;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  z-index: 200;
+}
+.skip-link:focus-visible { top: 1rem; }
+
+/* --- hand-drawn wavy underline links --- */
+.wavy {
+  position: relative;
+  display: inline;
+}
+.wavy::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -0.28em;
+  height: 7px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='7' viewBox='0 0 24 7'%3E%3Cpath d='M0 3.5 Q 6 0.8 12 3.5 T 24 3.5' fill='none' stroke='%23002fa7' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+  background-size: 24px 7px;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.65s var(--ease-out);
+  pointer-events: none;
+}
+.wavy:hover::after,
+.wavy:focus-visible::after { clip-path: inset(0 0 0 0); }
+.wavy:hover { color: var(--ikb); }
+.wavy { transition: color 0.4s var(--ease-out); }
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.masthead {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(1.25rem, 3vh, 2.5rem) clamp(1.5rem, 4vh, 3rem);
+  position: relative;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+}
+.topbar .smallcaps { color: var(--ink); }
+.topbar .smallcaps.dim { color: var(--ink-2); }
+.topbar .issue { color: var(--ikb); }
+
+.hero-name {
+  font-family: var(--serif);
+  font-weight: 470;
+  font-size: clamp(3.4rem, 14.5vw, 11.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  margin-top: clamp(1.5rem, 5vh, 3.5rem);
+}
+.hero-name .line-2 {
+  font-style: italic;
+  font-weight: 410;
+  color: var(--ink);
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 38ch);
+  gap: 1.5rem 3rem;
+  align-items: start;
+  margin-top: clamp(1.5rem, 4vh, 3rem);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line-soft);
+  position: relative;
+}
+.hero-role {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hero-role .dot { color: var(--ikb); }
+.standfirst {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+  font-weight: 380;
+  color: var(--ink-2);
+}
+.standfirst em { color: var(--ikb); font-style: italic; }
+
+/* --- table of contents --- */
+.toc {
+  margin-top: auto;
+  padding-top: clamp(2rem, 6vh, 4rem);
+}
+.toc-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.toc-heading .smallcaps { color: var(--ink); }
+.toc-list { display: block; }
+.toc-row {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.05rem 0;
+  border-bottom: 0;
+}
+.toc-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ikb);
+}
+.toc-title {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 450;
+  letter-spacing: -0.01em;
+  transition: color 0.4s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.toc-dek {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  text-align: right;
+}
+.toc-arrow {
+  font-family: var(--sans);
+  color: var(--ikb);
+  font-size: 1rem;
+  transition: transform 0.5s var(--ease-out);
+}
+.toc-row:hover .toc-title,
+.toc-row:focus-visible .toc-title { color: var(--ikb); }
+.toc-row:hover .toc-arrow,
+.toc-row:focus-visible .toc-arrow { transform: translateY(5px); }
+
+.cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: clamp(1.75rem, 5vh, 3rem);
+  align-self: center;
+  text-align: center;
+}
+.cue-line {
+  display: block;
+  width: 1px;
+  height: 2.4rem;
+  background: var(--line);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cue-line { animation: cuePulse 2.6s var(--ease-inout) infinite; }
+  @keyframes cuePulse {
+    0%, 100% { transform: scaleY(0.35); transform-origin: top; opacity: 0.5; }
+    50%      { transform: scaleY(1);    transform-origin: top; opacity: 1; }
+  }
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section {
+  position: relative;
+  padding-block: clamp(4.5rem, 11vw, 9rem);
+  scroll-margin-top: 2rem;
+}
+.section .container { position: relative; z-index: 1; }
+
+.ghost {
+  position: absolute;
+  top: 0.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(13rem, 34vw, 28rem);
+  line-height: 0.75;
+  color: var(--ghost);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.ghost--right { right: -0.06em; }
+.ghost--left  { left: -0.06em; }
+
+.sec-head { margin-bottom: clamp(2.25rem, 5vw, 4rem); }
+.kicker {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 0.9rem;
+}
+.kicker .part { color: var(--ikb); }
+.sec-head .rule { margin-bottom: clamp(1.5rem, 3.5vw, 2.5rem); }
+.sec-title {
+  font-family: var(--serif);
+  font-weight: 440;
+  font-size: clamp(2.4rem, 6.4vw, 4.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.prose {
+  max-width: 62ch;
+  font-size: clamp(1.05rem, 1.35vw, 1.15rem);
+  line-height: 1.8;
+}
+.prose + .prose { margin-top: 1.5rem; }
+
+/* ============================================================
+   PART ONE — THE QUESTION
+   ============================================================ */
+.question-body { max-width: 760px; }
+
+.dropcap::first-letter {
+  font-family: var(--serif);
+  font-weight: 560;
+  font-size: 4.6em;
+  line-height: 0.76;
+  float: left;
+  padding: 0.06em 0.14em 0 0;
+  color: var(--ikb);
+}
+
+.pull {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 380;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  position: relative;
+  margin-block: clamp(2.75rem, 6vw, 4.5rem);
+  max-width: 20ch;
+}
+.pull--question { font-size: clamp(1.9rem, 4.8vw, 3.3rem); }
+.pull--thesis   { font-size: clamp(2.15rem, 5.6vw, 4rem); max-width: 18ch; }
+.pull .qm {
+  position: absolute;
+  left: -0.48em;
+  top: -0.22em;
+  font-size: 1.7em;
+  font-style: normal;
+  color: var(--ikb);
+  opacity: 0.9;
+}
+.pull .accent { color: var(--ikb); }
+.pull-caption { margin-top: 1.4rem; }
+
+/* ============================================================
+   INTERSTITIAL — No 15
+   ============================================================ */
+.no15 {
+  background: var(--paper-2);
+  text-align: center;
+  padding-block: clamp(4.5rem, 11vw, 8.5rem);
+  position: relative;
+  overflow: clip;
+}
+.no15 .rule--top    { position: absolute; top: 0; left: 0; }
+.no15 .rule--bottom { position: absolute; bottom: 0; left: 0; }
+.no15-num {
+  font-family: var(--serif);
+  font-weight: 480;
+  font-size: clamp(6.5rem, 25vw, 20rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--ikb);
+  margin-block: clamp(1.25rem, 3vw, 2.5rem);
+  will-change: transform;
+}
+.no15-num .ord {
+  font-size: 0.3em;
+  font-style: italic;
+  line-height: 1;
+  position: relative;
+  top: -1.35em;
+  border-bottom: 0.09em solid currentColor;
+  padding-bottom: 0.05em;
+  margin-right: 0.25em;
+}
+.no15-caption {
+  font-family: var(--sans);
+  font-size: clamp(0.72rem, 1.4vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ink);
+  max-width: 52ch;
+  margin-inline: auto;
+  line-height: 2;
+}
+.no15-sign {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  margin-top: 1.4rem;
+}
+.no15-sign em { color: var(--ikb); font-style: italic; }
+
+/* ============================================================
+   PART TWO — THE WORK
+   ============================================================ */
+.sec-intro {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  color: var(--ink-2);
+  max-width: 52ch;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.65;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 1.25rem 3.5rem;
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
+}
+.proj-side { display: flex; flex-direction: column; gap: 0.6rem; }
+.proj-index {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: 420;
+  color: var(--ikb);
+  line-height: 1;
+}
+.proj-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  line-height: 1.9;
+}
+.proj-title {
+  font-family: var(--serif);
+  font-weight: 470;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.9rem;
+}
+.proj-desc {
+  max-width: 58ch;
+  color: var(--ink);
+  line-height: 1.75;
+}
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  margin-top: 1.2rem;
+}
+.tags li {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ikb);
+}
+.tags li::before { content: "— "; color: var(--line); }
+
+/* ============================================================
+   PART THREE — THE READING LIST
+   ============================================================ */
+.essay {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto;
+  gap: 0.75rem 2.5rem;
+  align-items: start;
+  padding-block: clamp(1.9rem, 4vw, 2.9rem);
+}
+.essay-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--ikb);
+  line-height: 1.4;
+}
+.essay-pub {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 0.55rem;
+}
+.essay-title {
+  font-family: var(--serif);
+  font-weight: 460;
+  font-size: clamp(1.35rem, 2.8vw, 2.05rem);
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  max-width: 26ch;
+}
+.essay-dek {
+  margin-top: 0.75rem;
+  color: var(--ink-2);
+  max-width: 56ch;
+  font-size: 0.99rem;
+  line-height: 1.7;
+}
+.essay-arrow {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ikb);
+  transition: transform 0.5s var(--ease-out);
+  align-self: center;
+}
+.essay:hover .essay-arrow { transform: translate(4px, -4px); }
+
+/* ============================================================
+   PART FOUR — THE RECORD
+   ============================================================ */
+.cv-labels {
+  display: grid;
+  grid-template-columns: 180px 1fr 1.15fr;
+  gap: 2.5rem;
+  padding-bottom: 0.7rem;
+}
+.cv-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 1.15fr;
+  gap: 0.5rem 2.5rem;
+  padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+.cv-dates {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ikb);
+  padding-top: 0.45em;
+}
+.cv-role {
+  font-family: var(--serif);
+  font-weight: 470;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.cv-org {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 380;
+  color: var(--ink-2);
+  margin-top: 0.35rem;
+}
+.cv-desc {
+  color: var(--ink);
+  font-size: 0.99rem;
+  line-height: 1.72;
+  padding-top: 0.3em;
+}
+
+.appendix { margin-top: clamp(3.5rem, 7vw, 5.5rem); }
+.appendix-head { margin-bottom: 1.1rem; }
+.appendix-head .smallcaps .letter { color: var(--ikb); }
+.appendix-body { padding-top: clamp(1.4rem, 3vw, 2rem); }
+
+.edu-degree {
+  font-family: var(--serif);
+  font-weight: 470;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  max-width: 26ch;
+}
+.edu-school {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-2);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  margin-top: 0.8rem;
+}
+.edu-stats {
+  margin-top: 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 2.1;
+}
+
+.cert-row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 2rem;
+  padding-block: 1.05rem;
+  align-items: baseline;
+}
+.cert-num {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ikb);
+  font-size: 1rem;
+}
+.cert-name {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 440;
+}
+
+.cap-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.4rem 2.5rem;
+  padding-block: 1.3rem;
+}
+.cap-name {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ikb);
+  padding-top: 0.4em;
+}
+.cap-list {
+  font-size: 0.99rem;
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 66ch;
+}
+
+/* ============================================================
+   COLOPHON
+   ============================================================ */
+.colophon {
+  position: relative;
+  padding-block: clamp(4.5rem, 10vw, 8rem) clamp(2rem, 4vw, 3rem);
+}
+.colophon-close {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  color: var(--ink-2);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: 44ch;
+}
+.write-cta {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.write-cta a { color: var(--ikb); }
+.write-cta .wavy::after { bottom: -0.12em; }
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 1rem 2.5rem;
+  align-items: baseline;
+  padding-block: 1.15rem;
+}
+.contact-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.contact-value {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 440;
+  overflow-wrap: anywhere;
+}
+.contact-arrow { color: var(--ikb); font-family: var(--serif); }
+
+.colophon-foot {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  align-items: baseline;
+}
+.end-slug { color: var(--ikb); font-size: 0.8rem; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px) {
+  .project { grid-template-columns: 1fr; gap: 1rem; }
+  .proj-side { flex-direction: row; align-items: baseline; gap: 1.25rem; flex-wrap: wrap; }
+  .cv-labels { display: none; }
+  .cv-row { grid-template-columns: 1fr; gap: 0.45rem; }
+  .cv-desc { padding-top: 0.35rem; }
+  .cap-row { grid-template-columns: 1fr; }
+  .contact-row { grid-template-columns: 1fr auto; }
+  .contact-label { grid-column: 1 / -1; }
+  .essay { grid-template-columns: 2.5rem 1fr; }
+  .essay-arrow { display: none; }
+}
+
+@media (max-width: 640px) {
+  .hero-meta { grid-template-columns: 1fr; }
+  .toc-dek { display: none; }
+  .toc-row { grid-template-columns: 2.6rem 1fr auto; }
+  .hide-sm { display: none; }
+  .cert-row { grid-template-columns: 2.5rem 1fr; gap: 1rem; }
+  .pull .qm { left: -0.05em; top: -1.05em; }
+  .pull { padding-top: 0.6em; }
+}
+
+/* ============================================================
+   REDUCED MOTION — dignified stillness
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#question">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+
+<!-- ==================== MASTHEAD ==================== -->
+<header class="masthead container" id="top">
+
+  <div class="topbar" data-fade>
+    <span class="smallcaps">Byline</span>
+    <span class="smallcaps dim hide-sm">An Engineer in Profile</span>
+    <span class="smallcaps issue">Issue &#8470;&#8201;15</span>
+  </div>
+  <div class="rule"></div>
+
+  <h1 class="hero-name">
+    <span class="mask"><span class="mask-line">Ranjan</span></span>
+    <span class="mask"><span class="mask-line line-2">Marasini</span></span>
+  </h1>
+
+  <div class="hero-meta">
+    <p class="hero-role" data-fade>AI &amp; Cloud Engineer <span class="dot">·</span> Security Researcher</p>
+    <p class="standfirst" data-fade>A profile in four parts — the work, the writing, and the record of an engineer from Bharatpur, Chitwan, Nepal, known on the world&rsquo;s cloud-security leaderboards as <em>No0bInj3ct3d</em>.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <div class="toc-heading">
+      <span class="smallcaps" data-fade>A Profile in Four Parts</span>
+      <span class="smallcaps dim hide-sm" data-fade>Contents</span>
+    </div>
+    <div class="rule"></div>
+    <div class="toc-list">
+      <a class="toc-row" href="#question">
+        <span class="toc-num">01</span>
+        <span class="toc-title">The Question</span>
+        <span class="toc-dek">Two worlds, one seam</span>
+        <span class="toc-arrow" aria-hidden="true">&darr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+      <a class="toc-row" href="#work">
+        <span class="toc-num">02</span>
+        <span class="toc-title">The Work</span>
+        <span class="toc-dek">Four systems, built and shipped</span>
+        <span class="toc-arrow" aria-hidden="true">&darr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+      <a class="toc-row" href="#writing">
+        <span class="toc-num">03</span>
+        <span class="toc-title">The Reading List</span>
+        <span class="toc-dek">Four dispatches from the field</span>
+        <span class="toc-arrow" aria-hidden="true">&darr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+      <a class="toc-row" href="#record">
+        <span class="toc-num">04</span>
+        <span class="toc-title">The Record</span>
+        <span class="toc-dek">The career, dated and ruled</span>
+        <span class="toc-arrow" aria-hidden="true">&darr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+    </div>
+  </nav>
+
+  <a class="cue" href="#question" data-fade>
+    <span class="smallcaps">Begin at Part One</span>
+    <span class="cue-line" aria-hidden="true"></span>
+  </a>
+
+</header>
+
+<div class="page-body">
+<main>
+
+  <!-- ==================== PART ONE — THE QUESTION ==================== -->
+  <section class="section" id="question" aria-labelledby="question-title">
+    <span class="ghost ghost--right" aria-hidden="true">01</span>
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker" data-fade><span class="part">Part One</span> &mdash; The Question</p>
+        <div class="rule"></div>
+        <h2 class="sec-title" id="question-title">
+          <span class="mask"><span class="mask-line">Two worlds,</span></span>
+          <span class="mask"><span class="mask-line">one seam.</span></span>
+        </h2>
+      </header>
+
+      <div class="question-body">
+        <p class="prose dropcap" data-fade>He works at the seam between two worlds most people keep apart. On one side of it, he deploys LLM agents into production for real users. On the other, he competes in cloud-security challenges at a global level &mdash; and the agents he ships run on exactly the infrastructure he knows how to compromise. Which is why a single question follows him through everything he builds:</p>
+
+        <blockquote class="pull pull--question" data-fade>
+          <span class="qm" aria-hidden="true">&ldquo;</span>How do we make autonomous AI systems <span class="accent">trustworthy and secure</span>, not just capable?
+        </blockquote>
+
+        <p class="prose" data-fade>His work spans zero-trust architecture, SIEM and identity systems, and retrieval-grounded agents with human-in-the-loop safety. Ask him to compress all of it into one line, and he already has one ready.</p>
+
+        <blockquote class="pull pull--thesis" data-fade>
+          <span class="qm" aria-hidden="true">&ldquo;</span>I build LLM agents you can <span class="accent">trust</span> &mdash; and break the cloud they run on.
+          <p class="pull-caption smallcaps">&mdash; The thesis, in one line</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INTERSTITIAL — No 15 ==================== -->
+  <section class="no15" aria-label="Championship result">
+    <div class="rule rule--top"></div>
+    <div class="container">
+      <p class="kicker" data-fade><span class="part">The Line</span> Worth a Page of Its Own</p>
+      <p class="no15-num" aria-hidden="true">N<span class="ord">o</span>15</p>
+      <p class="no15-caption" data-fade>#15 in the world &mdash; Wiz Ultimate Cloud Security Championship. 12/12 challenges solved.</p>
+      <p class="no15-sign" data-fade>Signed on the leaderboard as <em>No0bInj3ct3d</em></p>
+    </div>
+    <div class="rule rule--bottom"></div>
+  </section>
+
+  <!-- ==================== PART TWO — THE WORK ==================== -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <span class="ghost ghost--left" aria-hidden="true">02</span>
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker" data-fade><span class="part">Part Two</span> &mdash; The Work</p>
+        <div class="rule"></div>
+        <h2 class="sec-title" id="work-title">
+          <span class="mask"><span class="mask-line">Built, shipped,</span></span>
+          <span class="mask"><span class="mask-line">defended.</span></span>
+        </h2>
+      </header>
+
+      <p class="sec-intro" data-fade>Four systems he conceived, built, and stands behind &mdash; from a NIST-aligned zero-trust proof-of-concept to agents answering real users in production.</p>
+
+      <div class="rule"></div>
+      <article class="project" data-fade>
+        <div class="proj-side">
+          <span class="proj-index" aria-hidden="true">01</span>
+          <p class="proj-meta">Capstone · Lead Developer · 2025</p>
+        </div>
+        <div>
+          <h3 class="proj-title">SIEM &amp; RBAC for Zero&nbsp;Trust</h3>
+          <p class="proj-desc">A Zero Trust proof-of-concept aligned to NIST SP 800-207: Wazuh SIEM, pfSense + Snort enforcement, role-based access control over secure LDAP, and OpenEDR &mdash; conceived, built, and deployed end-to-end.</p>
+          <ul class="tags">
+            <li>Zero Trust</li><li>SIEM</li><li>RBAC</li><li>NIST 800-207</li>
+          </ul>
+        </div>
+      </article>
+
+      <div class="rule"></div>
+      <article class="project" data-fade>
+        <div class="proj-side">
+          <span class="proj-index" aria-hidden="true">02</span>
+          <p class="proj-meta">Production LLM Agent · Deployed</p>
+        </div>
+        <div>
+          <h3 class="proj-title">PARI &mdash; Grounded Agent</h3>
+          <p class="proj-desc">Answers strictly from an institution&rsquo;s own documents, labels every answer by source, routes sensitive actions through human approval, and enforces hallucination guardrails learned from real failures.</p>
+          <ul class="tags">
+            <li>LLM Agents</li><li>RAG</li><li>Trustworthy AI</li>
+          </ul>
+        </div>
+      </article>
+
+      <div class="rule"></div>
+      <article class="project" data-fade>
+        <div class="proj-side">
+          <span class="proj-index" aria-hidden="true">03</span>
+          <p class="proj-meta">Multi-Model Platform · In Testing</p>
+        </div>
+        <div>
+          <h3 class="proj-title">Vector &mdash; Accountability Agent</h3>
+          <p class="proj-desc">An agent that lives in a team&rsquo;s group chat, holds long-term shared context, and enforces accountability &mdash; tracking commitments, following up on missed deadlines, and routing work by context.</p>
+          <ul class="tags">
+            <li>Multi-Agent</li><li>Long Context</li><li>Automation</li>
+          </ul>
+        </div>
+      </article>
+
+      <div class="rule"></div>
+      <article class="project" data-fade>
+        <div class="proj-side">
+          <span class="proj-index" aria-hidden="true">04</span>
+          <p class="proj-meta">BPKMCH Cancer Hospital · 2024&ndash;25</p>
+        </div>
+        <div>
+          <h3 class="proj-title">Healthcare RBAC &amp; Infra</h3>
+          <p class="proj-desc">Deployed Proxmox virtualization and Zabbix monitoring across hospital servers, and built an RBAC patient-data system on an Nginx microservices architecture in a critical-uptime environment.</p>
+          <ul class="tags">
+            <li>Proxmox</li><li>RBAC</li><li>Microservices</li>
+          </ul>
+        </div>
+      </article>
+      <div class="rule"></div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PART THREE — THE READING LIST ==================== -->
+  <section class="section" id="writing" aria-labelledby="writing-title">
+    <span class="ghost ghost--right" aria-hidden="true">03</span>
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker" data-fade><span class="part">Part Three</span> &mdash; The Reading List</p>
+        <div class="rule"></div>
+        <h2 class="sec-title" id="writing-title">
+          <span class="mask"><span class="mask-line">Dispatches</span></span>
+          <span class="mask"><span class="mask-line">from the field.</span></span>
+        </h2>
+      </header>
+
+      <p class="sec-intro" data-fade>Four essays, published at ranjanm-security.medium.com &mdash; two offensive, two defensive. Best read in order.</p>
+
+      <div class="rule"></div>
+      <article class="essay" data-fade>
+        <span class="essay-num" aria-hidden="true">i.</span>
+        <div>
+          <p class="essay-pub">Medium · The Championship Writeup</p>
+          <h3 class="essay-title"><a class="wavy" href="https://ranjanm-security.medium.com/sniping-the-cloud-how-i-spammed-242-000-bots-to-crack-an-invisible-ci-cd-pipeline-4f72712d700f" target="_blank" rel="noopener">Sniping the Cloud: 242,000 Bots vs. an Invisible CI/CD Pipeline</a></h3>
+          <p class="essay-dek">Defeating a loose AWS CodeBuild webhook filter and chaining a poisoned-pipeline execution &mdash; the 15th-place Wiz writeup.</p>
+        </div>
+        <span class="essay-arrow" aria-hidden="true">&nearr;</span>
+      </article>
+
+      <div class="rule rule--soft"></div>
+      <article class="essay" data-fade>
+        <span class="essay-num" aria-hidden="true">ii.</span>
+        <div>
+          <p class="essay-pub">Medium · Offensive Research</p>
+          <h3 class="essay-title"><a class="wavy" href="https://ranjanm-security.medium.com/beating-the-clock-exploiting-terraform-race-conditions-toctou-4ce92c310b68" target="_blank" rel="noopener">Beating the Clock: Exploiting Terraform Race Conditions (TOCTOU)</a></h3>
+          <p class="essay-dek">A sticky-bit ownership race, a gRPC side-channel, and a staggered timing attack on Terraform provider loading.</p>
+        </div>
+        <span class="essay-arrow" aria-hidden="true">&nearr;</span>
+      </article>
+
+      <div class="rule rule--soft"></div>
+      <article class="essay" data-fade>
+        <span class="essay-num" aria-hidden="true">iii.</span>
+        <div>
+          <p class="essay-pub">Medium · Defensive Practice</p>
+          <h3 class="essay-title"><a class="wavy" href="https://ranjanm-security.medium.com/building-resilient-defense-a-blue-teams-guide-to-proactive-security-monitoring-72b315b224f4" target="_blank" rel="noopener">Building Resilient Defense: A Blue Team&rsquo;s Guide to Proactive Monitoring</a></h3>
+          <p class="essay-dek">Practical detection and monitoring strategy for real environments.</p>
+        </div>
+        <span class="essay-arrow" aria-hidden="true">&nearr;</span>
+      </article>
+
+      <div class="rule rule--soft"></div>
+      <article class="essay" data-fade>
+        <span class="essay-num" aria-hidden="true">iv.</span>
+        <div>
+          <p class="essay-pub">Medium · Defensive Practice</p>
+          <h3 class="essay-title"><a class="wavy" href="https://ranjanm-security.medium.com/5-blue-team-lessons-that-actually-work-in-real-environments-e87b6bc49008" target="_blank" rel="noopener">5 Blue Team Lessons That Actually Work in Real Environments</a></h3>
+          <p class="essay-dek">Hard-won defensive lessons from hands-on security work.</p>
+        </div>
+        <span class="essay-arrow" aria-hidden="true">&nearr;</span>
+      </article>
+      <div class="rule"></div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PART FOUR — THE RECORD ==================== -->
+  <section class="section" id="record" aria-labelledby="record-title">
+    <span class="ghost ghost--left" aria-hidden="true">04</span>
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker" data-fade><span class="part">Part Four</span> &mdash; The Record</p>
+        <div class="rule"></div>
+        <h2 class="sec-title" id="record-title">
+          <span class="mask"><span class="mask-line">The career,</span></span>
+          <span class="mask"><span class="mask-line">ruled in hairlines.</span></span>
+        </h2>
+      </header>
+
+      <p class="sec-intro" data-fade>Four positions, one degree, five certifications. The facts, dated and ruled.</p>
+
+      <div class="cv-labels">
+        <span class="smallcaps" data-fade>Years</span>
+        <span class="smallcaps" data-fade>Position</span>
+        <span class="smallcaps" data-fade>In Brief</span>
+      </div>
+
+      <div class="rule"></div>
+      <article class="cv-row" data-fade>
+        <p class="cv-dates">Mar 2026&ndash;Present</p>
+        <div>
+          <h3 class="cv-role">Instructor &mdash; &ldquo;CTF Strategies&rdquo;</h3>
+          <p class="cv-org">Forbes College</p>
+        </div>
+        <p class="cv-desc">Designed and teaches a Capture-The-Flag course to undergraduates; President of the college cybersecurity club.</p>
+      </article>
+
+      <div class="rule rule--soft"></div>
+      <article class="cv-row" data-fade>
+        <p class="cv-dates">Apr&ndash;Oct 2025</p>
+        <div>
+          <h3 class="cv-role">Associate Security Research Analyst</h3>
+          <p class="cv-org">SecurityPal Inc.</p>
+        </div>
+        <p class="cv-desc">GRC across FedRAMP, ISO 27001, and ISO/IEC 42001 (AI Management Systems); enterprise security questionnaire and vendor-risk assessment.</p>
+      </article>
+
+      <div class="rule rule--soft"></div>
+      <article class="cv-row" data-fade>
+        <p class="cv-dates">Dec 2024&ndash;Apr 2025</p>
+        <div>
+          <h3 class="cv-role">System Administrator Intern</h3>
+          <p class="cv-org">BPKMCH Cancer Hospital</p>
+        </div>
+        <p class="cv-desc">Virtualization, monitoring, and access-control systems in a critical healthcare environment; ran hospital IT solo during the lead admin&rsquo;s absence.</p>
+      </article>
+
+      <div class="rule rule--soft"></div>
+      <article class="cv-row" data-fade>
+        <p class="cv-dates">2023&ndash;Present</p>
+        <div>
+          <h3 class="cv-role">Independent AI &amp; Cloud Engineer</h3>
+          <p class="cv-org">Client Work, End to End</p>
+        </div>
+        <p class="cv-desc">Designs, builds, and operates LLM-agent systems and web applications end-to-end for clients &mdash; logic, deployment, backups, and support.</p>
+      </article>
+      <div class="rule"></div>
+
+      <!-- Appendix A — Education -->
+      <div class="appendix">
+        <div class="appendix-head">
+          <p class="smallcaps" data-fade><span class="letter">Appendix A</span> &nbsp;&mdash;&nbsp; Education</p>
+        </div>
+        <div class="rule"></div>
+        <div class="appendix-body" data-fade>
+          <h3 class="edu-degree">B.Sc. Computer Science &mdash; Network Technology &amp; Cyber Security</h3>
+          <p class="edu-school">University of Computer Sciences and Skills, Poland · via Forbes College · Jan 2022 &ndash; Dec 2025</p>
+          <p class="edu-stats">CGPA 3.87 / 4.00 &nbsp;·&nbsp; 240 ECTS &nbsp;·&nbsp; &ldquo;Distinction&rdquo; standing across nearly all coursework</p>
+        </div>
+      </div>
+
+      <!-- Appendix B — Credentials -->
+      <div class="appendix">
+        <div class="appendix-head">
+          <p class="smallcaps" data-fade><span class="letter">Appendix B</span> &nbsp;&mdash;&nbsp; Credentials</p>
+        </div>
+        <div class="rule"></div>
+        <div class="appendix-body">
+          <div class="cert-row" data-fade>
+            <span class="cert-num" aria-hidden="true">i.</span>
+            <p class="cert-name">SC-900 &mdash; Security, Compliance &amp; Identity</p>
+          </div>
+          <div class="rule rule--soft"></div>
+          <div class="cert-row" data-fade>
+            <span class="cert-num" aria-hidden="true">ii.</span>
+            <p class="cert-name">APIsec Certified Practitioner</p>
+          </div>
+          <div class="rule rule--soft"></div>
+          <div class="cert-row" data-fade>
+            <span class="cert-num" aria-hidden="true">iii.</span>
+            <p class="cert-name">CEH &mdash; EC-Council</p>
+          </div>
+          <div class="rule rule--soft"></div>
+          <div class="cert-row" data-fade>
+            <span class="cert-num" aria-hidden="true">iv.</span>
+            <p class="cert-name">ISC2 Certified in Cybersecurity</p>
+          </div>
+          <div class="rule rule--soft"></div>
+          <div class="cert-row" data-fade>
+            <span class="cert-num" aria-hidden="true">v.</span>
+            <p class="cert-name">AZ-900 &mdash; Azure Fundamentals</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appendix C — Capabilities -->
+      <div class="appendix">
+        <div class="appendix-head">
+          <p class="smallcaps" data-fade><span class="letter">Appendix C</span> &nbsp;&mdash;&nbsp; Capabilities</p>
+        </div>
+        <div class="rule"></div>
+        <div class="appendix-body">
+          <div class="cap-row" data-fade>
+            <h4 class="cap-name">Security</h4>
+            <p class="cap-list">Zero Trust, SIEM (Wazuh), IDS/IPS (Snort), EDR, RBAC/LDAP, pfSense, cloud &amp; CI/CD security, forensics, GRC (FedRAMP, ISO 27001, ISO 42001).</p>
+          </div>
+          <div class="rule rule--soft"></div>
+          <div class="cap-row" data-fade>
+            <h4 class="cap-name">Cloud &amp; Infra</h4>
+            <p class="cap-list">AWS, Proxmox, VMware, Linux/VPS, Docker, Nginx microservices, Zabbix, systemd.</p>
+          </div>
+          <div class="rule rule--soft"></div>
+          <div class="cap-row" data-fade>
+            <h4 class="cap-name">AI &amp; Agents</h4>
+            <p class="cap-list">LLM agent systems, RAG design, multi-model orchestration, prompt engineering.</p>
+          </div>
+          <div class="rule rule--soft"></div>
+          <div class="cap-row" data-fade>
+            <h4 class="cap-name">Development</h4>
+            <p class="cap-list">Python, Java, JavaScript/TypeScript, MERN, Django, Laravel, C/C++.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- ==================== COLOPHON ==================== -->
+<footer class="colophon" id="colophon">
+  <div class="container">
+    <div class="rule"></div>
+    <div style="padding-top: clamp(2.5rem, 5vw, 4rem);">
+      <p class="kicker" data-fade><span class="part">Colophon</span> &mdash; Correspondence</p>
+      <p class="colophon-close" data-fade>&mdash; End of profile. The subject is reachable, and replies.</p>
+
+      <p class="write-cta">
+        <span class="mask"><span class="mask-line">Write to <a class="wavy" href="mailto:ranjanmarasini123@gmail.com">him</a>.</span></span>
+      </p>
+
+      <div class="rule"></div>
+      <a class="contact-row" href="mailto:ranjanmarasini123@gmail.com">
+        <span class="contact-label">Email</span>
+        <span class="contact-value wavy">ranjanmarasini123@gmail.com</span>
+        <span class="contact-arrow" aria-hidden="true">&nearr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+      <a class="contact-row" href="https://www.linkedin.com/in/ranjan-marasini-434202182" target="_blank" rel="noopener">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value wavy">in/ranjan-marasini-434202182</span>
+        <span class="contact-arrow" aria-hidden="true">&nearr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+      <a class="contact-row" href="https://github.com/Rockerran21" target="_blank" rel="noopener">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value wavy">Rockerran21</span>
+        <span class="contact-arrow" aria-hidden="true">&nearr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+      <a class="contact-row" href="https://ranjanm-security.medium.com" target="_blank" rel="noopener">
+        <span class="contact-label">Medium</span>
+        <span class="contact-value wavy">ranjanm-security.medium.com</span>
+        <span class="contact-arrow" aria-hidden="true">&nearr;</span>
+      </a>
+      <div class="rule rule--soft"></div>
+
+      <div class="colophon-foot">
+        <span class="smallcaps">Ranjan Marasini · AI &amp; Cloud Engineer · Security Researcher</span>
+        <span class="smallcaps">Bharatpur, Chitwan, Nepal</span>
+        <span class="smallcaps">Set in Fraunces &amp; Inter · &copy; 2026 <span class="end-slug" aria-hidden="true">&#9632;</span></span>
+      </div>
+    </div>
+  </div>
+</footer>
+</div><!-- /.page-body -->
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function init() {
+    var prefersReduced = false;
+    try {
+      prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (e) { prefersReduced = false; }
+
+    var hasGsap = (typeof window.gsap !== 'undefined') && (typeof window.ScrollTrigger !== 'undefined');
+
+    if (prefersReduced || !hasGsap) {
+      document.documentElement.classList.add('is-static');
+      return; /* default CSS is fully visible — dignified static page */
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ---------- Masthead entrance ---------- */
+    var heroLines = gsap.utils.toArray('.masthead .mask-line');
+    var heroFades = gsap.utils.toArray('.masthead [data-fade]');
+    var heroRules = gsap.utils.toArray('.masthead .rule');
+    var tocRows   = gsap.utils.toArray('.masthead .toc-row');
+
+    gsap.set(heroLines, { yPercent: 115 });
+    gsap.set(heroFades, { autoAlpha: 0, y: 16 });
+    gsap.set(tocRows,   { autoAlpha: 0, y: 20 });
+    gsap.set(heroRules, { scaleX: 0, transformOrigin: 'left center' });
+
+    var heroPlayed = false;
+    function playHero() {
+      if (heroPlayed) return;
+      heroPlayed = true;
+      var tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.25 } });
+      tl.to(heroRules, { scaleX: 1, duration: 1.6, ease: 'power3.inOut', stagger: 0.06 }, 0.1)
+        .to(heroLines, { yPercent: 0, duration: 1.5, stagger: 0.13 }, 0.18)
+        .to(heroFades, { autoAlpha: 1, y: 0, stagger: 0.1 }, 0.7)
+        .to(tocRows,   { autoAlpha: 1, y: 0, stagger: 0.08 }, 1.0);
+      ScrollTrigger.refresh();
+    }
+
+    if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+      document.fonts.ready.then(playHero, playHero);
+    }
+    window.setTimeout(playHero, 1100); /* safety net if the Font Loading API stalls */
+
+    /* ---------- Scroll: masked line reveals ---------- */
+    gsap.utils.toArray('.page-body .mask-line').forEach(function (line) {
+      gsap.set(line, { yPercent: 115 });
+      gsap.to(line, {
+        yPercent: 0,
+        duration: 1.4,
+        ease: 'power4.out',
+        scrollTrigger: { trigger: line.parentNode, start: 'top 87%' }
+      });
+    });
+
+    /* ---------- Scroll: hairlines drawing themselves ---------- */
+    gsap.utils.toArray('.page-body .rule').forEach(function (rule) {
+      gsap.set(rule, { scaleX: 0, transformOrigin: 'left center' });
+      gsap.to(rule, {
+        scaleX: 1,
+        duration: 1.5,
+        ease: 'power3.inOut',
+        scrollTrigger: { trigger: rule, start: 'top 93%' }
+      });
+    });
+
+    /* ---------- Scroll: quiet fades ---------- */
+    var fades = gsap.utils.toArray('.page-body [data-fade]');
+    if (fades.length) {
+      gsap.set(fades, { autoAlpha: 0, y: 26 });
+      var showFades = function (batch) {
+        gsap.to(batch, {
+          autoAlpha: 1, y: 0,
+          duration: 1.15,
+          ease: 'power3.out',
+          stagger: 0.09,
+          overwrite: true
+        });
+      };
+      ScrollTrigger.batch(fades, { start: 'top 90%', onEnter: showFades, onEnterBack: showFades });
+    }
+
+    /* ---------- Gentle parallax: ghost numerals ---------- */
+    gsap.utils.toArray('.ghost').forEach(function (el) {
+      gsap.fromTo(el, { yPercent: -10 }, {
+        yPercent: 12,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el.parentNode,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    });
+
+    /* ---------- Parallax: the No 15 interstitial ---------- */
+    var big = document.querySelector('.no15-num');
+    if (big) {
+      gsap.fromTo(big, { y: 70 }, {
+        y: -70,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.no15',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
+
+    /* ---------- Reading progress hairline ---------- */
+    var progress = document.querySelector('.progress');
+    if (progress) {
+      gsap.fromTo(progress, { scaleX: 0 }, {
+        scaleX: 1,
+        ease: 'none',
+        transformOrigin: 'left center',
+        scrollTrigger: { start: 0, end: 'max', scrub: 0.3 }
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>

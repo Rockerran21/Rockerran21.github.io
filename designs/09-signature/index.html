@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranjan Marasini — AI &amp; Cloud Engineer · Security Researcher</title>
+<meta name="description" content="Ranjan Marasini — AI &amp; Cloud Engineer and cybersecurity researcher. 15th worldwide in the Wiz Ultimate Cloud Security Championship. Builds trustworthy LLM agents; breaks cloud infrastructure.">
+<meta property="og:title" content="Ranjan Marasini — AI &amp; Cloud Engineer · Security Researcher">
+<meta property="og:description" content="15th worldwide in the Wiz Ultimate Cloud Security Championship. Builds trustworthy LLM agents; breaks cloud infrastructure.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Ranjan Marasini","jobTitle":"AI & Cloud Engineer, Cybersecurity Researcher","address":{"@type":"PostalAddress","addressLocality":"Bharatpur, Chitwan","addressCountry":"Nepal"},"alumniOf":"University of Computer Sciences and Skills (Forbes College)","sameAs":["https://www.linkedin.com/in/ranjan-marasini-434202182","https://github.com/Rockerran21","https://ranjanm-security.medium.com"]}
+</script>
+<style>
+  :root{
+    --bg:#04060a; --panel:#0a0f16; --panel2:#0e141d; --line:#18212e; --line2:#263344;
+    --ink:#f0f4fa; --mut:#94a3b8; --dim:#5c6e84;
+    --mint:#4ef0b4; --blue:#66b5ff; --violet:#a98bff; --amber:#ffd479;
+    --glow:rgba(78,240,180,.13);
+    --mx:50%; --my:0%;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  ::selection{background:rgba(78,240,180,.25);color:#fff}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Inter',-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.65; overflow-x:hidden; position:relative;
+  }
+  ::-webkit-scrollbar{width:10px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--line2);border-radius:6px}
+  ::-webkit-scrollbar-thumb:hover{background:#33455c}
+
+  /* ambient background */
+  .bgfx{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.55;mix-blend-mode:screen}
+  .b1{width:620px;height:620px;background:radial-gradient(circle,#0d5a44,transparent 70%);top:-180px;left:-140px;animation:drift1 24s ease-in-out infinite}
+  .b2{width:560px;height:560px;background:radial-gradient(circle,#123c72,transparent 70%);top:18%;right:-180px;animation:drift2 28s ease-in-out infinite}
+  .b3{width:460px;height:460px;background:radial-gradient(circle,#341c66,transparent 70%);bottom:-160px;left:28%;animation:drift1 32s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,55px) scale(1.06)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-80px,45px) scale(1.05)}}
+  .grid-overlay{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.45;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000,transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000,transparent 80%)}
+  .spotlight{position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:radial-gradient(640px circle at var(--mx) var(--my),var(--glow),transparent 60%)}
+  #net{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55}
+  .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.032;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* scroll progress */
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--mint),var(--blue));box-shadow:0 0 12px rgba(78,240,180,.5)}
+
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:rgba(4,6,10,.65);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-family:'Space Grotesk';font-weight:700;letter-spacing:-.5px;font-size:17px;display:flex;align-items:center;gap:10px}
+  .brand .sq{width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--mint),var(--blue));
+    box-shadow:0 0 14px rgba(78,240,180,.6)}
+  .navlinks{display:flex;gap:4px;font-size:13.5px}
+  .navlinks a{color:var(--mut);transition:color .2s,background .2s;padding:7px 13px;border-radius:8px}
+  .navlinks a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+  @media(max-width:640px){.navlinks{display:none}}
+
+  /* hero */
+  .hero{padding:88px 24px 64px;position:relative}
+  .hero-grid{display:grid;gap:48px;align-items:center;perspective:1200px}
+  @media(min-width:920px){.hero-grid{grid-template-columns:1.25fr .95fr}}
+  .status{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;
+    font-family:'JetBrains Mono';color:var(--mut);border:1px solid var(--line2);border-radius:100px;
+    padding:7px 15px;margin-bottom:28px;background:rgba(10,15,22,.6)}
+  .status .pulse{width:7px;height:7px;border-radius:50%;background:var(--mint);
+    box-shadow:0 0 0 0 rgba(78,240,180,.6);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(78,240,180,.5)}70%{box-shadow:0 0 0 8px rgba(78,240,180,0)}100%{box-shadow:0 0 0 0 rgba(78,240,180,0)}}
+  h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(42px,7vw,74px);
+    line-height:1.02;letter-spacing:-2.5px;margin-bottom:24px}
+  h1 .g{background:linear-gradient(120deg,var(--mint),var(--blue),var(--violet),var(--mint));background-size:300% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 9s ease-in-out infinite}
+  @keyframes sheen{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+  .tag{font-size:clamp(17px,2.4vw,21px);font-weight:500;color:var(--mut);max-width:34ch;line-height:1.5}
+  .tag .build{color:var(--mint);font-weight:600}
+  .tag .break{color:var(--blue);font-weight:600}
+
+  .cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 19px;border-radius:12px;
+    font-size:14px;font-weight:600;border:1px solid var(--line2);color:var(--ink);background:rgba(10,15,22,.5);
+    transition:transform .18s,border-color .2s,background .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);border-color:var(--mint);box-shadow:0 8px 24px -12px rgba(78,240,180,.4)}
+  .btn.primary{background:linear-gradient(120deg,var(--mint),#3fd9cb);color:#03130d;border:none;
+    box-shadow:0 8px 30px -8px rgba(78,240,180,.5)}
+  .btn.primary:hover{box-shadow:0 14px 38px -8px rgba(78,240,180,.65)}
+  .btn svg{width:15px;height:15px}
+
+  /* terminal card */
+  .term{background:rgba(8,12,18,.85);border:1px solid var(--line2);border-radius:16px;overflow:hidden;
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(78,240,180,.04),0 0 60px -20px rgba(78,240,180,.12);
+    backdrop-filter:blur(8px);font-family:'JetBrains Mono';font-size:12.5px;line-height:2;
+    transform-style:preserve-3d;will-change:transform;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+  .term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.02)}
+  .term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+  .term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+  .term-bar span{margin-left:auto;color:var(--dim);font-size:11px;letter-spacing:.5px}
+  .term-body{padding:18px 20px 22px}
+  .term-body .ln{white-space:pre-wrap;word-break:break-word}
+  .term-body .p{color:var(--mint)}
+  .term-body .c{color:var(--ink)}
+  .term-body .o{color:var(--mut)}
+  .term-body .hl{color:var(--blue)}
+  .term-body .am{color:var(--amber)}
+  .caret{display:inline-block;width:8px;height:15px;background:var(--mint);vertical-align:-2px;
+    animation:blink 1.1s steps(1) infinite;box-shadow:0 0 8px rgba(78,240,180,.7)}
+  @keyframes blink{50%{opacity:0}}
+  @media(max-width:919px){.term{max-width:560px}}
+
+  /* stat panel */
+  .stat{margin-top:56px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+    background:linear-gradient(120deg,rgba(78,240,180,.09),rgba(102,181,255,.05) 60%,rgba(169,139,255,.06));
+    border:1px solid var(--line2);border-radius:20px;padding:26px 30px;position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(var(--mint),var(--blue))}
+  .stat::after{content:"";position:absolute;top:-60%;right:-10%;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,rgba(102,181,255,.12),transparent 70%);pointer-events:none}
+  .stat .rank{font-family:'Space Grotesk';font-weight:700;font-size:62px;line-height:1;
+    background:linear-gradient(120deg,var(--mint),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 24px rgba(78,240,180,.25))}
+  .stat .body{flex:1;min-width:220px;color:var(--mut);font-size:14.5px}
+  .stat .body b{color:var(--ink)}
+  .stat .link{color:var(--mint);font-weight:600;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;
+    transition:gap .2s}
+  .stat .link:hover{gap:10px}
+
+  /* sections */
+  section{padding:84px 0 8px;position:relative}
+  .shead{display:flex;align-items:center;gap:16px;margin-bottom:38px}
+  .snum{font-family:'JetBrains Mono';font-size:13px;color:var(--mint);font-weight:500}
+  .stitle{font-family:'Space Grotesk';font-size:26px;font-weight:600;letter-spacing:-.6px;white-space:nowrap}
+  .srule{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
+  .lead{font-size:18.5px;line-height:1.75;max-width:66ch;color:#c3ccd8}
+  .lead .hl{color:var(--ink);font-weight:600}
+  .lead .m{color:var(--mint)}
+  .lead .bl{color:var(--blue)}
+
+  .grid{display:grid;gap:18px;perspective:1600px}
+  @media(min-width:700px){.grid.two{grid-template-columns:1fr 1fr}}
+
+  /* cards with gradient-border hover */
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 28px;
+    position:relative;transition:transform .25s,background .25s;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+    background:linear-gradient(135deg,rgba(78,240,180,.55),rgba(102,181,255,.4) 50%,rgba(169,139,255,.35));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
+  .card::after{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(78,240,180,.5),transparent);opacity:0;transition:opacity .3s}
+  .card:hover{transform:translateY(-4px) rotateX(1.6deg);background:var(--panel2)}
+  .card:hover::before,.card:hover::after{opacity:1}
+  .card h3{font-family:'Space Grotesk';font-size:18px;font-weight:600;margin-bottom:6px;letter-spacing:-.3px}
+  .card .meta{font-family:'JetBrains Mono';font-size:11px;color:var(--dim);letter-spacing:.8px;
+    text-transform:uppercase;margin-bottom:13px}
+  .card p{font-size:14.5px;color:var(--mut)}
+  .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:7px}
+  .tag-i{font-family:'JetBrains Mono';font-size:11px;color:var(--blue);background:rgba(102,181,255,.06);
+    border:1px solid rgba(102,181,255,.22);border-radius:7px;padding:4px 10px}
+
+  /* posts */
+  .post{display:flex;align-items:center;gap:18px;background:var(--panel);border:1px solid var(--line);
+    border-radius:16px;padding:20px 24px;margin-bottom:13px;position:relative;overflow:hidden;
+    transition:transform .22s,border-color .22s,background .22s}
+  .post::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(var(--mint),var(--blue));opacity:0;transition:opacity .25s}
+  .post:hover{transform:translateX(6px);border-color:var(--line2);background:var(--panel2)}
+  .post:hover::before{opacity:1}
+  .post .ix{font-family:'JetBrains Mono';font-size:13px;color:var(--dim);transition:color .2s}
+  .post:hover .ix{color:var(--mint)}
+  .post .pc{flex:1}
+  .post h3{font-family:'Space Grotesk';font-size:16.5px;font-weight:600;margin-bottom:4px;letter-spacing:-.2px}
+  .post p{font-size:13.5px;color:var(--mut)}
+  .post .arr{color:var(--mint);font-size:20px;transition:transform .2s}
+  .post:hover .arr{transform:translateX(5px)}
+
+  /* experience timeline */
+  .tl{position:relative;padding-left:34px}
+  .tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:1px;
+    background:linear-gradient(var(--mint),var(--line2) 30%,var(--line2) 70%,transparent)}
+  .tl .card{margin-bottom:18px}
+  .tl-item{position:relative}
+  .tl-item::before{content:"";position:absolute;left:-31px;top:30px;width:11px;height:11px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--mint);box-shadow:0 0 10px rgba(78,240,180,.45);z-index:1}
+  .tl-item:not(:first-child)::before{border-color:var(--line2);box-shadow:none}
+  .tl-item:hover::before{border-color:var(--mint);box-shadow:0 0 10px rgba(78,240,180,.45)}
+
+  /* skills */
+  .skwrap{display:grid;gap:16px}
+  @media(min-width:700px){.skwrap{grid-template-columns:1fr 1fr}}
+  .sk{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+    transition:border-color .25s,background .25s}
+  .sk:hover{border-color:var(--line2);background:var(--panel2)}
+  .sk b{font-family:'Space Grotesk';color:var(--ink);font-size:15px;display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .sk b::before{content:"";width:7px;height:7px;border-radius:2px;background:linear-gradient(135deg,var(--mint),var(--blue));
+    box-shadow:0 0 8px rgba(78,240,180,.5)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-family:'JetBrains Mono';font-size:11.5px;color:var(--mut);background:rgba(255,255,255,.03);
+    border:1px solid var(--line);border-radius:7px;padding:4px 10px;transition:color .2s,border-color .2s}
+  .sk:hover .chip{color:#b6c2d2}
+  .chip:hover{border-color:var(--mint);color:var(--mint)!important}
+
+  /* education */
+  .edu{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin-bottom:22px;
+    position:relative;overflow:hidden}
+  .edu::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--violet),var(--blue))}
+  .edu h3{font-family:'Space Grotesk';font-size:18.5px;margin-bottom:7px;letter-spacing:-.3px}
+  .edu .meta{font-family:'JetBrains Mono';font-size:11.5px;color:var(--dim);margin-bottom:11px;letter-spacing:.5px}
+  .edu p{color:var(--mut);font-size:14.5px}
+  .edu p b{color:var(--ink)}
+  .certs{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .cert{font-family:'JetBrains Mono';font-size:12.5px;background:var(--panel);border:1px solid var(--line2);
+    border-radius:10px;padding:10px 15px;color:var(--mut);transition:transform .2s,border-color .2s}
+  .cert:hover{transform:translateY(-2px);border-color:var(--mint)}
+  .cert b{color:var(--mint)}
+
+  /* footer / contact */
+  footer{margin-top:84px;padding:76px 0 60px;border-top:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+  footer::before{content:"";position:absolute;top:-140px;left:50%;transform:translateX(-50%);
+    width:640px;height:280px;border-radius:50%;filter:blur(90px);pointer-events:none;
+    background:radial-gradient(ellipse,rgba(78,240,180,.09),transparent 70%)}
+  .f-kick{font-family:'JetBrains Mono';font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mint);margin-bottom:14px}
+  .f-title{font-family:'Space Grotesk';font-weight:700;font-size:clamp(30px,5vw,46px);letter-spacing:-1.5px;margin-bottom:14px}
+  .f-title .g{background:linear-gradient(120deg,var(--mint),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .f-sub{color:var(--mut);max-width:46ch;margin:0 auto 30px;font-size:15.5px}
+  .flinks{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+  .flinks a{font-family:'JetBrains Mono';font-size:13px;color:var(--mut);border:1px solid var(--line);
+    border-radius:10px;padding:9px 16px;transition:color .2s,border-color .2s,transform .2s;background:rgba(10,15,22,.5)}
+  .flinks a:hover{color:var(--mint);border-color:var(--mint);transform:translateY(-2px)}
+  footer .sig{color:var(--dim);font-size:12.5px;font-family:'JetBrains Mono'}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    .blob,.b1,.b2,.b3,.pulse,.caret,h1 .g{animation:none}
+    .term{transition:none}
+    #net{display:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="bgfx"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+<div class="spotlight" id="spot"></div>
+<canvas id="net" aria-hidden="true"></canvas>
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+
+<nav><div class="wrap nav">
+  <div class="brand"><span class="sq"></span>Ranjan Marasini</div>
+  <div class="navlinks">
+    <a href="#work">Work</a><a href="#writing">Writing</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<header class="wrap hero">
+  <div class="hero-grid">
+    <div>
+      <div class="status"><span class="pulse"></span>Bharatpur, Chitwan · Nepal</div>
+      <h1>AI &amp; Cloud Engineer<br><span class="g">Security Researcher</span></h1>
+      <div class="tag">I <span class="build">build</span> LLM agents you can trust — and <span class="break">break</span> the cloud they run on.</div>
+      <div class="cta">
+        <a class="btn primary" href="https://ranjanm-security.medium.com" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Read my security writing</a>
+        <a class="btn" href="https://www.linkedin.com/in/ranjan-marasini-434202182" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Rockerran21" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="mailto:ranjanmarasini123@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="term rv in" aria-hidden="true">
+      <div class="term-bar"><i></i><i></i><i></i><span>ranjan@cloud — zsh</span></div>
+      <div class="term-body">
+        <div class="ln"><span class="p">$</span> <span class="c">whoami</span></div>
+        <div class="ln"><span class="o">ranjan — AI &amp; cloud engineer, security researcher</span></div>
+        <div class="ln"><span class="p">$</span> <span class="c">cat rank.txt</span></div>
+        <div class="ln"><span class="hl">#15 worldwide</span><span class="o"> · Wiz Cloud Security Championship · </span><span class="am">12/12 solved</span></div>
+        <div class="ln"><span class="p">$</span> <span class="c">ls certs/</span></div>
+        <div class="ln"><span class="o">CEH&nbsp;&nbsp;SC-900&nbsp;&nbsp;AZ-900&nbsp;&nbsp;ISC2-CC&nbsp;&nbsp;APIsec</span></div>
+        <div class="ln"><span class="p">$</span> <span class="c">./deploy --agents --trustworthy</span> <span class="caret"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat rv">
+    <div class="rank">#15</div>
+    <div class="body"><b>15th in the world</b> — Wiz Ultimate Cloud Security Championship. 12/12 challenges solved, competing as <span class="mono" style="color:var(--blue)">No0bInj3ct3d</span>.</div>
+    <a class="link" href="https://ranjanm-security.medium.com/sniping-the-cloud-how-i-spammed-242-000-bots-to-crack-an-invisible-ci-cd-pipeline-4f72712d700f" target="_blank" rel="noopener">Read the exploit <span>→</span></a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="shead rv"><span class="snum">01</span><span class="stitle">The seam I work at</span><span class="srule"></span></div>
+    <p class="lead rv">I'm a cloud &amp; security engineer working between two worlds most people keep apart. I <span class="m">deploy LLM agents into production</span> for real users, and I <span class="bl">compete in cloud-security challenges</span> at a global level. Those agents run on exactly the infrastructure I know how to compromise — so I care about one question above all: <span class="hl">how do we make autonomous AI systems trustworthy and secure, not just capable?</span> My work spans zero-trust architecture, SIEM and identity systems, and retrieval-grounded agents with human-in-the-loop safety.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="shead rv"><span class="snum">02</span><span class="stitle">Selected work</span><span class="srule"></span></div>
+    <div class="grid two">
+      <div class="card rv"><h3>SIEM &amp; RBAC for Zero Trust</h3><div class="meta">Capstone · Lead Developer · 2025</div><p>A Zero Trust proof-of-concept aligned to NIST SP 800-207: Wazuh SIEM, pfSense + Snort enforcement, role-based access control over secure LDAP, and OpenEDR — conceived, built, and deployed end-to-end.</p><div class="tags"><span class="tag-i">Zero Trust</span><span class="tag-i">SIEM</span><span class="tag-i">RBAC</span><span class="tag-i">NIST 800-207</span></div></div>
+      <div class="card rv"><h3>PARI — Grounded Agent</h3><div class="meta">Production LLM Agent · Deployed</div><p>Answers strictly from an institution's own documents, labels every answer by source, routes sensitive actions through human approval, and enforces hallucination guardrails learned from real failures.</p><div class="tags"><span class="tag-i">LLM Agents</span><span class="tag-i">RAG</span><span class="tag-i">Trustworthy AI</span></div></div>
+      <div class="card rv"><h3>Vector — Accountability Agent</h3><div class="meta">Multi-Model Platform · In Testing</div><p>An agent that lives in a team's group chat, holds long-term shared context, and enforces accountability — tracking commitments, following up on missed deadlines, and routing work by context.</p><div class="tags"><span class="tag-i">Multi-Agent</span><span class="tag-i">Long Context</span><span class="tag-i">Automation</span></div></div>
+      <div class="card rv"><h3>Healthcare RBAC &amp; Infra</h3><div class="meta">BPKMCH Cancer Hospital · 2024–25</div><p>Deployed Proxmox virtualization and Zabbix monitoring across hospital servers, and built an RBAC patient-data system on an Nginx microservices architecture in a critical-uptime environment.</p><div class="tags"><span class="tag-i">Proxmox</span><span class="tag-i">RBAC</span><span class="tag-i">Microservices</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <div class="shead rv"><span class="snum">03</span><span class="stitle">Security writing</span><span class="srule"></span></div>
+    <a class="post rv" href="https://ranjanm-security.medium.com/sniping-the-cloud-how-i-spammed-242-000-bots-to-crack-an-invisible-ci-cd-pipeline-4f72712d700f" target="_blank" rel="noopener"><span class="ix mono">/01</span><div class="pc"><h3>Sniping the Cloud: 242,000 Bots vs. an Invisible CI/CD Pipeline</h3><p>Defeating a loose AWS CodeBuild webhook filter and chaining a poisoned-pipeline execution — my 15th-place Wiz writeup.</p></div><span class="arr">→</span></a>
+    <a class="post rv" href="https://ranjanm-security.medium.com/beating-the-clock-exploiting-terraform-race-conditions-toctou-4ce92c310b68" target="_blank" rel="noopener"><span class="ix mono">/02</span><div class="pc"><h3>Beating the Clock: Exploiting Terraform Race Conditions (TOCTOU)</h3><p>A sticky-bit ownership race, a gRPC side-channel, and a staggered timing attack on Terraform provider loading.</p></div><span class="arr">→</span></a>
+    <a class="post rv" href="https://ranjanm-security.medium.com/building-resilient-defense-a-blue-teams-guide-to-proactive-security-monitoring-72b315b224f4" target="_blank" rel="noopener"><span class="ix mono">/03</span><div class="pc"><h3>Building Resilient Defense: A Blue Team's Guide to Proactive Monitoring</h3><p>Practical detection and monitoring strategy for real environments.</p></div><span class="arr">→</span></a>
+    <a class="post rv" href="https://ranjanm-security.medium.com/5-blue-team-lessons-that-actually-work-in-real-environments-e87b6bc49008" target="_blank" rel="noopener"><span class="ix mono">/04</span><div class="pc"><h3>5 Blue Team Lessons That Actually Work in Real Environments</h3><p>Hard-won defensive lessons from hands-on security work.</p></div><span class="arr">→</span></a>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="shead rv"><span class="snum">04</span><span class="stitle">Experience</span><span class="srule"></span></div>
+    <div class="tl">
+      <div class="tl-item rv"><div class="card"><h3>Instructor — "CTF Strategies"</h3><div class="meta">Forbes College · Mar 2026–Present</div><p>Designed and teach a Capture-The-Flag course to undergraduates; President of the college cybersecurity club.</p></div></div>
+      <div class="tl-item rv"><div class="card"><h3>Associate Security Research Analyst</h3><div class="meta">SecurityPal Inc. · Apr–Oct 2025</div><p>GRC across FedRAMP, ISO 27001, and ISO/IEC 42001 (AI Management Systems); enterprise security questionnaire and vendor-risk assessment.</p></div></div>
+      <div class="tl-item rv"><div class="card"><h3>System Administrator Intern</h3><div class="meta">BPKMCH Cancer Hospital · Dec 2024–Apr 2025</div><p>Virtualization, monitoring, and access-control systems in a critical healthcare environment; ran hospital IT solo during the lead admin's absence.</p></div></div>
+      <div class="tl-item rv"><div class="card"><h3>Independent AI &amp; Cloud Engineer</h3><div class="meta">2023–Present</div><p>Design, build, and operate LLM-agent systems and web applications end-to-end for clients — logic, deployment, backups, and support.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="shead rv"><span class="snum">05</span><span class="stitle">Toolkit</span><span class="srule"></span></div>
+    <div class="skwrap">
+      <div class="sk rv"><b>Security</b><div class="chips"><span class="chip">Zero Trust</span><span class="chip">SIEM (Wazuh)</span><span class="chip">IDS/IPS (Snort)</span><span class="chip">EDR</span><span class="chip">RBAC / LDAP</span><span class="chip">pfSense</span><span class="chip">Cloud &amp; CI/CD security</span><span class="chip">Forensics</span><span class="chip">GRC · FedRAMP · ISO 27001 · ISO 42001</span></div></div>
+      <div class="sk rv"><b>Cloud &amp; Infrastructure</b><div class="chips"><span class="chip">AWS</span><span class="chip">Proxmox</span><span class="chip">VMware</span><span class="chip">Linux / VPS</span><span class="chip">Docker</span><span class="chip">Nginx microservices</span><span class="chip">Zabbix</span><span class="chip">systemd</span></div></div>
+      <div class="sk rv"><b>AI &amp; Agents</b><div class="chips"><span class="chip">LLM agent systems</span><span class="chip">RAG design</span><span class="chip">Multi-model orchestration</span><span class="chip">Prompt engineering</span></div></div>
+      <div class="sk rv"><b>Development</b><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript / TypeScript</span><span class="chip">MERN</span><span class="chip">Django</span><span class="chip">Laravel</span><span class="chip">C / C++</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="shead rv"><span class="snum">06</span><span class="stitle">Education &amp; certifications</span><span class="srule"></span></div>
+    <div class="edu rv">
+      <h3>B.Sc. Computer Science — Network Technology &amp; Cyber Security</h3>
+      <div class="meta">University of Computer Sciences and Skills, Poland · via Forbes College · Jan 2022 – Dec 2025</div>
+      <p><b>CGPA 3.87 / 4.00</b> · 240 ECTS · "Distinction" standing across nearly all coursework.</p>
+    </div>
+    <div class="certs rv">
+      <span class="cert"><b>SC-900</b> Security, Compliance &amp; Identity</span>
+      <span class="cert"><b>APIsec</b> Certified Practitioner</span>
+      <span class="cert"><b>CEH</b> EC-Council</span>
+      <span class="cert"><b>ISC2</b> Certified in Cybersecurity</span>
+      <span class="cert"><b>AZ-900</b> Azure Fundamentals</span>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="f-kick rv">Contact</div>
+    <div class="f-title rv">Let's build something <span class="g">trustworthy</span>.</div>
+    <p class="f-sub rv">Agents, cloud, security — if it needs to be both capable and safe, I'm interested.</p>
+    <div class="flinks rv">
+      <a href="https://www.linkedin.com/in/ranjan-marasini-434202182" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/Rockerran21" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://ranjanm-security.medium.com" target="_blank" rel="noopener">Medium ↗</a>
+      <a href="mailto:ranjanmarasini123@gmail.com">Email ↗</a>
+    </div>
+    <div class="sig">Ranjan Marasini — building trust into autonomous systems.</div>
+  </div>
+</footer>
+
+<script>
+  // mouse spotlight
+  var root=document.documentElement;
+  window.addEventListener('pointermove',function(e){
+    root.style.setProperty('--mx',e.clientX+'px');
+    root.style.setProperty('--my',e.clientY+'px');
+  },{passive:true});
+  // scroll progress
+  var prog=document.getElementById('progress');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+  },{passive:true});
+  var noMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // particle network background
+  if(!noMotion){(function(){
+    var cv=document.getElementById('net'),cx=cv.getContext('2d');
+    var DPR=Math.min(window.devicePixelRatio||1,2),W,H,pts=[],mx=-9999,my=-9999;
+    function size(){W=window.innerWidth;H=window.innerHeight;
+      cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0);
+      var n=W<700?34:72;pts=[];
+      for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.4+.6});
+    }
+    size();window.addEventListener('resize',size);
+    window.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+    var LINK=130,MLINK=170;
+    function frame(){
+      cx.clearRect(0,0,W,H);
+      for(var i=0;i<pts.length;i++){
+        var p=pts[i];p.x+=p.vx;p.y+=p.vy;
+        if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;
+        if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;
+        for(var j=i+1;j<pts.length;j++){
+          var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=dx*dx+dy*dy;
+          if(d<LINK*LINK){var a=(1-Math.sqrt(d)/LINK)*.16;
+            cx.strokeStyle='rgba(102,181,255,'+a+')';cx.lineWidth=1;
+            cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke();}
+        }
+        var mdx=p.x-mx,mdy=p.y-my,md=mdx*mdx+mdy*mdy;
+        if(md<MLINK*MLINK){var ma=(1-Math.sqrt(md)/MLINK)*.35;
+          cx.strokeStyle='rgba(78,240,180,'+ma+')';cx.lineWidth=1;
+          cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(mx,my);cx.stroke();}
+        cx.fillStyle=md<MLINK*MLINK?'rgba(78,240,180,.75)':'rgba(148,163,184,.5)';
+        cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();}
+
+  // 3D tilt on terminal card
+  if(!noMotion){(function(){
+    var term=document.querySelector('.term'),zone=document.querySelector('.hero-grid');
+    if(!term||!zone)return;
+    zone.addEventListener('pointermove',function(e){
+      var r=term.getBoundingClientRect();
+      var px=(e.clientX-r.left-r.width/2)/(r.width/2);
+      var py=(e.clientY-r.top-r.height/2)/(r.height/2);
+      px=Math.max(-1.6,Math.min(1.6,px));py=Math.max(-1.6,Math.min(1.6,py));
+      term.style.transform='rotateY('+(px*5)+'deg) rotateX('+(-py*4)+'deg) translateZ(8px)';
+    });
+    zone.addEventListener('pointerleave',function(){term.style.transform=''});
+  })();}
+
+  // terminal typing animation
+  (function(){
+    var lns=Array.prototype.slice.call(document.querySelectorAll('.term-body .ln'));
+    if(!lns.length)return;
+    if(noMotion)return;
+    lns.forEach(function(l){l.style.visibility='hidden'});
+    function show(i){
+      if(i>=lns.length)return;
+      var l=lns[i];l.style.visibility='';
+      var c=l.querySelector('.c');
+      if(c){var full=c.textContent,j=0;c.textContent='';
+        var t=setInterval(function(){c.textContent=full.slice(0,++j);
+          if(j>=full.length){clearInterval(t);setTimeout(function(){show(i+1)},160)}},26);}
+      else setTimeout(function(){show(i+1)},200);
+    }
+    setTimeout(function(){show(0)},500);
+  })();
+
+  // scroll reveal with stagger
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        var el=en.target;
+        var sibs=el.parentElement?Array.prototype.filter.call(el.parentElement.children,function(c){return c.classList&&c.classList.contains('rv')}):[];
+        var i=sibs.indexOf(el);
+        el.style.transitionDelay=(i>0?Math.min(i*70,280):0)+'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>

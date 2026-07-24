@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ranjan Marasini — AI &amp; Cloud Engineer · Security Researcher</title>
+<meta name="description" content="Ranjan Marasini (No0bInj3ct3d) — AI &amp; Cloud Engineer and Security Researcher. #15 in the world, Wiz Ultimate Cloud Security Championship. I build LLM agents you can trust — and break the cloud they run on.">
+<meta property="og:title" content="Ranjan Marasini — AI &amp; Cloud Engineer · Security Researcher">
+<meta property="og:description" content="#15 in the world — Wiz Ultimate Cloud Security Championship. I build LLM agents you can trust — and break the cloud they run on.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   INJECTION — kinetic type & glitch
+   pure black / acid green #39ff14 / hot magenta #ff2d95
+   ============================================================ */
+:root{
+  --bg:#000000;
+  --ink:#f4f4f2;
+  --dim:#a3a9ad;
+  --dimmer:#5f6569;
+  --acid:#39ff14;
+  --mag:#ff2d95;
+  --line:#1b1e1c;
+  --disp:'Archivo Black', system-ui, sans-serif;
+  --body:'Space Grotesk', system-ui, sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
+  --sp-1:.5rem; --sp-2:1rem; --sp-3:1.75rem; --sp-4:3rem; --sp-5:5rem; --sp-6:8rem;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-snap:cubic-bezier(.83,0,.17,1);
+}
+*,*::before,*::after{ margin:0; padding:0; box-sizing:border-box; }
+html{
+  background:var(--bg);
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  scroll-padding-top:5.5rem;
+  scrollbar-color:#39ff14 #000;
+  scrollbar-width:thin;
+}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:1rem;
+  line-height:1.55;
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+::selection{ background:var(--acid); color:#000; }
+::-moz-selection{ background:var(--acid); color:#000; }
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:#000; border-left:1px solid #101210; }
+::-webkit-scrollbar-thumb{ background:var(--acid); border:2px solid #000; }
+::-webkit-scrollbar-thumb:hover{ background:var(--mag); }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+:focus-visible{ outline:2px dashed var(--acid); outline-offset:4px; }
+.wrap{ width:min(100% - clamp(2.5rem,7vw,8rem), 1500px); margin-inline:auto; }
+
+/* ---------- scanlines (max 3% opacity) ---------- */
+.scan{
+  position:fixed; inset:0; z-index:90; pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(255,255,255,.026) 0 1px, transparent 1px 3px);
+}
+
+/* ---------- glitch grammar ---------- */
+@keyframes slice-a{
+  0%  { clip-path:inset(6% 0 76% 0);  transform:translate(-6px,2px); }
+  20% { clip-path:inset(55% 0 26% 0); transform:translate(5px,-2px); }
+  40% { clip-path:inset(26% 0 58% 0); transform:translate(-4px,1px); }
+  60% { clip-path:inset(72% 0 8% 0);  transform:translate(5px,2px); }
+  80% { clip-path:inset(40% 0 46% 0); transform:translate(-7px,-2px); }
+  100%{ clip-path:inset(50% 0 50% 0); transform:translate(0,0); }
+}
+@keyframes slice-b{
+  0%  { clip-path:inset(68% 0 10% 0); transform:translate(6px,-2px); }
+  20% { clip-path:inset(12% 0 70% 0); transform:translate(-5px,2px); }
+  40% { clip-path:inset(48% 0 36% 0); transform:translate(6px,-1px); }
+  60% { clip-path:inset(20% 0 64% 0); transform:translate(-6px,-2px); }
+  80% { clip-path:inset(60% 0 22% 0); transform:translate(4px,2px); }
+  100%{ clip-path:inset(50% 0 50% 0); transform:translate(0,0); }
+}
+.glitch, .gh{ position:relative; }
+.glitch::before,.glitch::after,
+.gh::before,.gh::after{
+  content:attr(data-text);
+  position:absolute; inset:0;
+  opacity:0; pointer-events:none;
+  -webkit-text-stroke:0;
+}
+.glitch::before,.gh::before{ color:var(--mag); }
+.glitch::after,.gh::after{ color:var(--acid); }
+.glitch-on::before{ opacity:.9; animation:slice-a .38s steps(1,end) both; }
+.glitch-on::after{ opacity:.9; animation:slice-b .42s steps(1,end) both; }
+.gh:hover::before,.gh:focus-visible::before{ opacity:.9; animation:slice-a .32s steps(1,end) both; }
+.gh:hover::after,.gh:focus-visible::after{ opacity:.9; animation:slice-b .36s steps(1,end) both; }
+
+/* ---------- page shake ---------- */
+@keyframes pageshake{
+  10%,90%{ transform:translate3d(-2px,2px,0); }
+  20%,80%{ transform:translate3d(4px,-2px,0); }
+  30%,50%,70%{ transform:translate3d(-7px,3px,0); }
+  40%,60%{ transform:translate3d(7px,-3px,0); }
+}
+.is-shaking{ animation:pageshake .5s cubic-bezier(.36,.07,.19,.97) both; }
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.1rem clamp(1.25rem,3.5vw,4rem);
+  mix-blend-mode:difference;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
+}
+.nav-alias{ font-weight:700; color:#fff; white-space:nowrap; }
+.nav-alias .p{ color:#fff; opacity:.55; }
+.nav-links{ display:flex; gap:clamp(.9rem,2.5vw,2.25rem); }
+.nav-links a{ color:#fff; padding:.25rem 0; transition:opacity .25s var(--ease-out); }
+.nav-links a:hover{ opacity:.85; }
+@media (max-width:640px){
+  .nav-alias .alias-full{ display:none; }
+  .nav{ font-size:.66rem; }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh; min-height:100svh;
+  display:flex; flex-direction:column; justify-content:center;
+  position:relative;
+  padding-top:5rem; padding-bottom:4rem;
+}
+.hero-kick{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.22em;
+  color:var(--acid); margin-bottom:var(--sp-3);
+}
+.hero-name{
+  font-family:var(--disp);
+  font-size:clamp(2.9rem, 12.5vw, 11.5rem);
+  line-height:.92;
+  text-transform:uppercase;
+  letter-spacing:-.015em;
+  font-weight:400;
+}
+.hn-line{ display:block; }
+.hn-line:nth-child(2){ color:transparent; -webkit-text-stroke:2px var(--ink); }
+@supports not (-webkit-text-stroke:1px #fff){
+  .hn-line:nth-child(2){ color:var(--ink); }
+}
+.hero-sub{
+  display:inline-block;
+  margin-top:var(--sp-3);
+  font-family:var(--body); font-weight:700;
+  font-size:clamp(.95rem, 2.4vw, 1.6rem);
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink);
+  text-shadow:2px 0 rgba(255,45,149,.55), -2px 0 rgba(57,255,20,.5);
+  transform-origin:left center;
+}
+.hero-tag{
+  margin-top:var(--sp-3);
+  max-width:34ch;
+  font-family:var(--mono);
+  font-size:clamp(.9rem, 1.6vw, 1.15rem);
+  color:var(--dim);
+  border-left:2px solid var(--mag);
+  padding-left:1rem;
+}
+.hero-tag strong{ color:var(--ink); font-weight:500; }
+.hero-meta{
+  margin-top:var(--sp-4);
+  display:flex; flex-wrap:wrap; gap:.6rem 2.25rem;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
+  color:var(--dimmer); text-transform:uppercase;
+}
+.hero-meta b{ color:var(--acid); font-weight:500; }
+.hero-hint{
+  position:absolute; bottom:2rem; left:0;
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.2em;
+  color:var(--dimmer);
+}
+.hero-hint .caret{
+  display:inline-block; width:8px; height:14px; background:var(--acid);
+  vertical-align:-2px; margin-left:.5rem;
+  animation:blink 1.3s steps(2,start) infinite;
+}
+@keyframes blink{ to{ visibility:hidden; } }
+
+/* ---------- marquee bands ---------- */
+.band-wrap{
+  position:relative; overflow:hidden;
+  height:clamp(8rem, 7rem + 8vw, 15rem);
+}
+.band{
+  position:absolute; top:50%; left:50%;
+  width:150vw;
+  transform:translate(-50%,-50%) rotate(-2.2deg);
+  overflow:hidden;
+}
+.band-b .band{ transform:translate(-50%,-50%) rotate(2deg); }
+.band-track{
+  display:flex; width:max-content;
+  animation:slide 26s linear infinite;
+}
+.band-track > span{
+  display:block; flex:0 0 auto; white-space:nowrap;
+  font-family:var(--mono); font-weight:700;
+  font-size:clamp(1rem, 2.2vw, 1.5rem);
+  letter-spacing:.04em;
+  padding:.8rem 0;
+}
+@keyframes slide{ to{ transform:translate3d(-50%,0,0); } }
+.band-a .band{ background:var(--acid); }
+.band-a .band-track > span{ color:#000; }
+.band-b .band{ background:#000; border-top:1px solid var(--mag); border-bottom:1px solid var(--mag); }
+.band-b .band-track > span{ color:var(--mag); }
+.band-b .band-track{ animation-duration:32s; animation-direction:reverse; }
+
+/* ---------- section scaffolding ---------- */
+.sec{ padding:clamp(4.5rem, 12vh, 9rem) 0; position:relative; }
+.kick{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.22em;
+  color:var(--dimmer); text-transform:uppercase;
+  margin-bottom:var(--sp-3);
+}
+.kick i{ font-style:normal; color:var(--mag); }
+.giant{
+  display:inline-block; position:relative;
+  font-family:var(--disp); font-weight:400;
+  font-size:clamp(3.2rem, 11vw, 10rem);
+  line-height:.95; text-transform:uppercase; letter-spacing:-.01em;
+  margin-bottom:var(--sp-4);
+}
+.g-base{
+  display:block; color:var(--ink);
+}
+@supports (-webkit-text-stroke:1px #fff){
+  .g-base{ color:transparent; -webkit-text-stroke:1.5px rgba(244,244,242,.82); }
+}
+.g-fill{
+  position:absolute; inset:0; display:block;
+  clip-path:inset(-6% 100% -6% 0%);
+}
+.fill-acid .g-fill{ color:var(--acid); }
+.fill-mag .g-fill{ color:var(--mag); }
+.no-gsap .g-fill{ clip-path:none; }
+
+/* ---------- rank (#15) ---------- */
+.rank{ min-height:88vh; display:flex; align-items:center; }
+.rank-inner{ width:100%; }
+.rank-num{
+  display:block;
+  font-family:var(--disp);
+  font-size:clamp(8rem, 30vw, 25rem);
+  line-height:.85;
+  color:var(--acid);
+  letter-spacing:-.03em;
+  text-shadow:.04em 0 rgba(255,45,149,.5), -.04em 0 rgba(57,255,20,.28);
+  will-change:transform;
+}
+.rank-word{
+  display:block;
+  font-family:var(--disp);
+  font-size:clamp(1.7rem, 6.4vw, 5.4rem);
+  text-transform:uppercase; line-height:1.05;
+  color:var(--ink);
+  margin-top:.5rem;
+}
+.rank-sub{
+  margin-top:var(--sp-3);
+  font-family:var(--mono);
+  font-size:clamp(.85rem, 1.7vw, 1.1rem);
+  color:var(--dim);
+  max-width:46ch;
+}
+.rank-sub b{ color:var(--mag); font-weight:700; }
+.rank-link{
+  display:inline-block; margin-top:var(--sp-3);
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.12em;
+  color:var(--acid); border-bottom:1px solid var(--acid);
+  padding-bottom:.2rem;
+  transition:color .25s var(--ease-out), border-color .25s var(--ease-out);
+}
+.rank-link:hover{ color:var(--mag); border-color:var(--mag); }
+
+/* ---------- about ---------- */
+.about-copy{
+  max-width:62ch;
+  font-size:clamp(1.05rem, 2vw, 1.45rem);
+  line-height:1.6;
+  color:var(--dim);
+}
+.about-copy strong{ color:var(--ink); font-weight:600; }
+.about-copy em{ font-style:normal; color:var(--acid); }
+.about-copy .q{ color:var(--mag); }
+.about-copy p + p{ margin-top:var(--sp-3); }
+
+/* ---------- work ---------- */
+.work-head{ padding-bottom:var(--sp-2); }
+.work-row{
+  border-top:1px solid var(--line);
+  transition:background .35s var(--ease-out);
+  position:relative;
+}
+.work-row:last-of-type{ border-bottom:1px solid var(--line); }
+.wr-in{
+  display:grid;
+  grid-template-columns:4.5rem 1fr minmax(11rem, auto);
+  gap:1rem 2.5rem;
+  padding:clamp(1.75rem, 4vw, 3rem) 0;
+  align-items:start;
+}
+.wr-num{
+  font-family:var(--mono); font-size:.85rem; font-weight:700;
+  color:var(--dimmer); padding-top:.55em; letter-spacing:.1em;
+  transition:color .3s var(--ease-out);
+}
+.wr-title{
+  font-family:var(--disp); font-weight:400;
+  font-size:clamp(1.5rem, 4.4vw, 3.3rem);
+  line-height:1.02; text-transform:uppercase; letter-spacing:-.01em;
+  position:relative;
+  transition:color .3s var(--ease-out);
+}
+.wr-title::before,.wr-title::after{
+  content:attr(data-text);
+  position:absolute; inset:0; opacity:0; pointer-events:none;
+}
+.wr-title::before{ color:#000; }
+.wr-title::after{ color:#fff; }
+.work-row:hover .wr-title::before{ opacity:.85; animation:slice-a .34s steps(1,end) both; }
+.work-row:hover .wr-title::after{ opacity:.85; animation:slice-b .38s steps(1,end) both; }
+.wr-meta{
+  margin-top:.7rem;
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--acid);
+  transition:color .3s var(--ease-out);
+}
+.wr-desc{
+  margin-top:.9rem; max-width:58ch;
+  color:var(--dim); font-size:clamp(.92rem, 1.5vw, 1.05rem);
+  transition:color .3s var(--ease-out);
+}
+.wr-tags{
+  display:flex; flex-direction:column; align-items:flex-start; gap:.5rem;
+  padding-top:.4em;
+}
+.wr-tags li{
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--dimmer);
+  border:1px solid var(--line); padding:.3rem .65rem;
+  transition:color .3s var(--ease-out), border-color .3s var(--ease-out);
+}
+.work-row:hover{ background:var(--acid); }
+.work-row.alt:hover{ background:var(--mag); }
+.work-row:hover .wr-title{ color:#000; }
+.work-row:hover .wr-meta{ color:#000; }
+.work-row:hover .wr-desc{ color:rgba(0,0,0,.72); }
+.work-row:hover .wr-num{ color:rgba(0,0,0,.6); }
+.work-row:hover .wr-tags li{ color:#000; border-color:rgba(0,0,0,.45); }
+
+/* ---------- writing ---------- */
+.wl{ border-top:1px solid var(--line); }
+.wl-item{
+  display:grid;
+  grid-template-columns:4.5rem 1fr auto;
+  gap:1rem 2.5rem; align-items:baseline;
+  padding:clamp(1.5rem, 3.5vw, 2.5rem) 0;
+  border-bottom:1px solid var(--line);
+  transition:transform .4s var(--ease-out);
+}
+.wl-item:hover{ transform:translateX(.75rem); }
+.wl-num{
+  font-family:var(--mono); font-size:.85rem; font-weight:700;
+  color:var(--mag); letter-spacing:.1em;
+}
+.wl-main{ display:block; }
+.wl-title{
+  display:block;
+  font-family:var(--body); font-weight:700;
+  font-size:clamp(1.15rem, 2.8vw, 2.3rem);
+  line-height:1.12; letter-spacing:-.01em;
+  position:relative; color:var(--ink);
+  transition:color .3s var(--ease-out);
+}
+.wl-item:hover .wl-title{ color:var(--acid); }
+.wl-title::before,.wl-title::after{
+  content:attr(data-text);
+  position:absolute; inset:0; opacity:0; pointer-events:none;
+}
+.wl-title::before{ color:var(--mag); }
+.wl-title::after{ color:var(--acid); }
+.wl-item:hover .wl-title::before{ opacity:.85; animation:slice-a .32s steps(1,end) both; }
+.wl-item:hover .wl-title::after{ opacity:.85; animation:slice-b .36s steps(1,end) both; }
+.wl-desc{
+  margin-top:.6rem; max-width:64ch;
+  color:var(--dim); font-size:clamp(.88rem, 1.4vw, 1rem);
+}
+.wl-arrow{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.16em;
+  color:var(--dimmer); white-space:nowrap;
+  transition:color .3s var(--ease-out);
+}
+.wl-item:hover .wl-arrow{ color:var(--mag); }
+
+/* ---------- experience ---------- */
+.xp-table{ border-top:2px solid var(--ink); }
+.xp-row{
+  display:grid;
+  grid-template-columns:clamp(8rem,14vw,12rem) 1.1fr 1.4fr;
+  gap:.75rem 2.5rem;
+  padding:1.9rem 0;
+  border-bottom:1px solid var(--line);
+}
+.xp-when{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.12em;
+  color:var(--acid); padding-top:.35em; text-transform:uppercase;
+}
+.xp-role{ font-weight:700; font-size:clamp(1.05rem,1.9vw,1.35rem); line-height:1.25; }
+.xp-org{
+  margin-top:.35rem;
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--dimmer);
+}
+.xp-note{ color:var(--dim); font-size:clamp(.9rem,1.4vw,1rem); }
+.edu-grid{
+  display:grid; grid-template-columns:1.25fr .75fr;
+  gap:var(--sp-4);
+  margin-top:var(--sp-5);
+  padding-top:var(--sp-4);
+  border-top:2px solid var(--ink);
+}
+.blk-label{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.22em;
+  color:var(--mag); text-transform:uppercase; margin-bottom:1.1rem;
+}
+.edu-deg{ font-weight:700; font-size:clamp(1.05rem,2vw,1.4rem); line-height:1.3; }
+.edu-line{
+  margin-top:.6rem; font-family:var(--mono); font-size:.78rem;
+  color:var(--dim); line-height:1.7;
+}
+.edu-line b{ color:var(--acid); font-weight:500; }
+.certs{ display:flex; flex-wrap:wrap; gap:.6rem; }
+.certs li{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.08em;
+  color:var(--dim); border:1px solid var(--line);
+  padding:.5rem .8rem;
+  transition:color .25s var(--ease-out), border-color .25s var(--ease-out);
+}
+.certs li:hover{ color:var(--acid); border-color:var(--acid); }
+
+/* ---------- skills ---------- */
+.tick-wrap{ overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:var(--sp-5); }
+.tick-track{
+  display:flex; width:max-content;
+  animation:slide 30s linear infinite;
+}
+.tick-track > span{
+  display:block; flex:0 0 auto; white-space:nowrap;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--dim);
+  padding:.85rem 0;
+}
+.tick-track b{ color:var(--acid); font-weight:400; }
+.skills-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-4) var(--sp-3);
+}
+.sk h3{
+  font-family:var(--disp); font-weight:400; font-size:1rem;
+  text-transform:uppercase; letter-spacing:.06em;
+  color:var(--ink); margin-bottom:.9rem;
+  padding-bottom:.7rem; border-bottom:1px solid var(--line);
+}
+.sk.acc-a h3{ border-color:var(--acid); }
+.sk.acc-b h3{ border-color:var(--mag); }
+.sk p{ font-family:var(--mono); font-size:.78rem; line-height:1.9; color:var(--dim); }
+
+/* ---------- contact ---------- */
+.contact{ padding-bottom:clamp(3rem,8vh,6rem); }
+.contact-line{
+  font-family:var(--mono); font-size:clamp(.8rem,1.5vw,1rem);
+  color:var(--dim); margin-bottom:var(--sp-4); max-width:52ch;
+}
+.contact-line b{ color:var(--acid); font-weight:500; }
+.email-link{
+  display:inline-block;
+  font-family:var(--body); font-weight:700;
+  font-size:clamp(1.3rem, 5.9vw, 5.6rem);
+  letter-spacing:-.03em; line-height:1.05;
+  color:var(--ink);
+  overflow-wrap:anywhere;
+  transition:color .3s var(--ease-out);
+}
+.email-link:hover{ color:var(--acid); }
+.contact-links{
+  display:flex; flex-wrap:wrap; gap:.8rem;
+  margin-top:var(--sp-5);
+}
+.contact-links a{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.18em;
+  border:1px solid var(--line); padding:.9rem 1.5rem;
+  color:var(--dim);
+  transition:color .25s var(--ease-out), border-color .25s var(--ease-out), background .25s var(--ease-out);
+}
+.contact-links a:hover{ color:#000; background:var(--acid); border-color:var(--acid); }
+.contact-links a:nth-child(even):hover{ background:var(--mag); border-color:var(--mag); }
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:2rem 0 2.5rem;
+}
+.foot{
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:.8rem 2rem;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.14em;
+  color:var(--dimmer); text-transform:uppercase;
+}
+.foot b{ color:var(--acid); font-weight:400; }
+.foot i{ font-style:normal; color:var(--mag); }
+
+/* ---------- cursor trail ---------- */
+#trail{ position:fixed; inset:0; z-index:95; pointer-events:none; overflow:hidden; }
+.tr-ch{
+  position:absolute;
+  font-family:var(--mono); font-size:13px; font-weight:700;
+  transform:translate(-50%,-50%);
+  opacity:.9;
+  transition:opacity .45s var(--ease-out), transform .45s var(--ease-out);
+  will-change:opacity,transform;
+}
+.tr-ch.out{ opacity:0; transform:translate(-50%,-20%) scale(.75); }
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .wr-in{ grid-template-columns:3.25rem 1fr; }
+  .wr-tags{ grid-column:2; flex-direction:row; flex-wrap:wrap; padding-top:.6rem; }
+  .skills-grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:760px){
+  .xp-row{ grid-template-columns:1fr; gap:.4rem; padding:1.6rem 0; }
+  .xp-when{ padding-top:0; }
+  .edu-grid{ grid-template-columns:1fr; gap:var(--sp-4); }
+  .wl-item{ grid-template-columns:3.25rem 1fr; }
+  .wl-arrow{ grid-column:2; }
+}
+@media (max-width:480px){
+  .wr-in{ grid-template-columns:1fr; }
+  .wr-num{ padding-top:0; }
+  .wr-tags{ grid-column:1; }
+  .wl-item{ grid-template-columns:1fr; }
+  .wl-arrow{ grid-column:1; }
+  .skills-grid{ grid-template-columns:1fr; }
+}
+
+/* ---------- reduced motion: dignified static ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .band-track,.tick-track{ animation:none; }
+  .g-fill{ clip-path:none !important; }
+  .hero-hint .caret{ animation:none; }
+  *,*::before,*::after{
+    animation-duration:.001s !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001s !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="page">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <p class="hero-kick">N0://No0bInj3ct3d — payload loaded</p>
+      <h1 class="hero-name">
+        <span class="hn-line glitch" id="hn1" data-text="Ranjan">Ranjan</span>
+        <span class="hn-line glitch" id="hn2" data-text="Marasini">Marasini</span>
+      </h1>
+      <p class="hero-sub glitch" id="heroSub" data-text="AI &amp; Cloud Engineer · Security Researcher">AI &amp; Cloud Engineer · Security Researcher</p>
+      <p class="hero-tag" id="heroTag"><strong>"I build LLM agents you can trust — and break the cloud they run on."</strong></p>
+      <div class="hero-meta" id="heroMeta">
+        <span>LOC <b>Bharatpur · Chitwan · Nepal</b></span>
+        <span>TZ <b>UTC+05:45</b></span>
+        <span>ALIAS <b>No0bInj3ct3d</b></span>
+        <span>RANK <b>#15 GLOBAL — WIZ</b></span>
+      </div>
+      <p class="hero-hint" id="heroHint">SCROLL TO INJECT<span class="caret"></span></p>
+    </div>
+  </header>
+
+  <!-- ================= BAND A ================= -->
+  <div class="band-wrap band-a" aria-hidden="true">
+    <div class="band">
+      <div class="band-track">
+        <span>'; DROP TABLE limits;-- &nbsp;::&nbsp; sanitize your inputs, not your ambition &nbsp;::&nbsp; #15 — WIZ ULTIMATE CLOUD SECURITY CHAMPIONSHIP &nbsp;::&nbsp; 12/12 CHALLENGES SOLVED &nbsp;::&nbsp; </span>
+        <span>'; DROP TABLE limits;-- &nbsp;::&nbsp; sanitize your inputs, not your ambition &nbsp;::&nbsp; #15 — WIZ ULTIMATE CLOUD SECURITY CHAMPIONSHIP &nbsp;::&nbsp; 12/12 CHALLENGES SOLVED &nbsp;::&nbsp; </span>
+        <span>'; DROP TABLE limits;-- &nbsp;::&nbsp; sanitize your inputs, not your ambition &nbsp;::&nbsp; #15 — WIZ ULTIMATE CLOUD SECURITY CHAMPIONSHIP &nbsp;::&nbsp; 12/12 CHALLENGES SOLVED &nbsp;::&nbsp; </span>
+        <span>'; DROP TABLE limits;-- &nbsp;::&nbsp; sanitize your inputs, not your ambition &nbsp;::&nbsp; #15 — WIZ ULTIMATE CLOUD SECURITY CHAMPIONSHIP &nbsp;::&nbsp; 12/12 CHALLENGES SOLVED &nbsp;::&nbsp; </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= RANK ================= -->
+  <section class="sec rank" id="rank" aria-label="Headline achievement">
+    <div class="wrap rank-inner">
+      <p class="kick" id="rankKicker"><i>SEC.01</i> :: THE RANK</p>
+      <span class="rank-num glitch" id="rankNum" data-text="#15">#15</span>
+      <span class="rank-word" id="rankWord">in the world</span>
+      <p class="rank-sub" id="rankSub">Wiz Ultimate Cloud Security Championship — <b>12/12 challenges solved.</b><br>Not a typo. Not a regional bracket. The world.</p>
+      <a class="rank-link" href="https://ranjanm-security.medium.com/sniping-the-cloud-how-i-spammed-242-000-bots-to-crack-an-invisible-ci-cd-pipeline-4f72712d700f" target="_blank" rel="noopener">READ THE 15TH-PLACE WRITEUP ↗</a>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="sec" id="about" aria-label="About">
+    <div class="wrap">
+      <p class="kick"><i>SEC.02</i> :: WHOAMI</p>
+      <h2 class="giant glitch fill-acid" data-text="ABOUT"><span class="g-base">ABOUT</span><span class="g-fill" aria-hidden="true">ABOUT</span></h2>
+      <div class="about-copy" data-rise>
+        <p>I work at the seam between two worlds most people keep apart: I <strong>deploy LLM agents into production</strong> for real users, and I <strong>compete in cloud-security challenges at a global level</strong>. Those agents run on exactly the infrastructure I know how to compromise.</p>
+        <p>So the question I care about most: <span class="q">how do we make autonomous AI systems trustworthy and secure — not just capable?</span></p>
+        <p>The work spans <em>zero-trust architecture</em>, <em>SIEM and identity systems</em>, and <em>retrieval-grounded agents</em> with human-in-the-loop safety.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section class="sec" id="work" aria-label="Selected work">
+    <div class="wrap work-head">
+      <p class="kick"><i>SEC.03</i> :: SELECTED BUILDS</p>
+      <h2 class="giant glitch fill-mag" data-text="WORK"><span class="g-base">WORK</span><span class="g-fill" aria-hidden="true">WORK</span></h2>
+    </div>
+
+    <article class="work-row" data-rise>
+      <div class="wrap wr-in">
+        <span class="wr-num">01</span>
+        <div class="wr-main">
+          <h3 class="wr-title" data-text="SIEM &amp; RBAC for Zero Trust">SIEM &amp; RBAC for Zero Trust</h3>
+          <p class="wr-meta">Capstone · Lead Developer · 2025</p>
+          <p class="wr-desc">A Zero Trust proof-of-concept aligned to NIST SP 800-207: Wazuh SIEM, pfSense + Snort enforcement, role-based access control over secure LDAP, and OpenEDR — conceived, built, and deployed end-to-end.</p>
+        </div>
+        <ul class="wr-tags"><li>Zero Trust</li><li>SIEM</li><li>RBAC</li><li>NIST 800-207</li></ul>
+      </div>
+    </article>
+
+    <article class="work-row alt" data-rise>
+      <div class="wrap wr-in">
+        <span class="wr-num">02</span>
+        <div class="wr-main">
+          <h3 class="wr-title" data-text="PARI — Grounded Agent">PARI — Grounded Agent</h3>
+          <p class="wr-meta">Production LLM Agent · Deployed</p>
+          <p class="wr-desc">Answers strictly from an institution's own documents, labels every answer by source, routes sensitive actions through human approval, and enforces hallucination guardrails learned from real failures.</p>
+        </div>
+        <ul class="wr-tags"><li>LLM Agents</li><li>RAG</li><li>Trustworthy AI</li></ul>
+      </div>
+    </article>
+
+    <article class="work-row" data-rise>
+      <div class="wrap wr-in">
+        <span class="wr-num">03</span>
+        <div class="wr-main">
+          <h3 class="wr-title" data-text="Vector — Accountability Agent">Vector — Accountability Agent</h3>
+          <p class="wr-meta">Multi-Model Platform · In Testing</p>
+          <p class="wr-desc">An agent that lives in a team's group chat, holds long-term shared context, and enforces accountability — tracking commitments, following up on missed deadlines, and routing work by context.</p>
+        </div>
+        <ul class="wr-tags"><li>Multi-Agent</li><li>Long Context</li><li>Automation</li></ul>
+      </div>
+    </article>
+
+    <article class="work-row alt" data-rise>
+      <div class="wrap wr-in">
+        <span class="wr-num">04</span>
+        <div class="wr-main">
+          <h3 class="wr-title" data-text="Healthcare RBAC &amp; Infra">Healthcare RBAC &amp; Infra</h3>
+          <p class="wr-meta">BPKMCH Cancer Hospital · 2024–25</p>
+          <p class="wr-desc">Deployed Proxmox virtualization and Zabbix monitoring across hospital servers, and built an RBAC patient-data system on an Nginx microservices architecture in a critical-uptime environment.</p>
+        </div>
+        <ul class="wr-tags"><li>Proxmox</li><li>RBAC</li><li>Microservices</li></ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= BAND B ================= -->
+  <div class="band-wrap band-b" aria-hidden="true">
+    <div class="band">
+      <div class="band-track">
+        <span>trust is a design decision &nbsp;::&nbsp; break it before it ships &nbsp;::&nbsp; human-in-the-loop &gt; vibes &nbsp;::&nbsp; SELECT * FROM ambition WHERE limits IS NULL &nbsp;::&nbsp; </span>
+        <span>trust is a design decision &nbsp;::&nbsp; break it before it ships &nbsp;::&nbsp; human-in-the-loop &gt; vibes &nbsp;::&nbsp; SELECT * FROM ambition WHERE limits IS NULL &nbsp;::&nbsp; </span>
+        <span>trust is a design decision &nbsp;::&nbsp; break it before it ships &nbsp;::&nbsp; human-in-the-loop &gt; vibes &nbsp;::&nbsp; SELECT * FROM ambition WHERE limits IS NULL &nbsp;::&nbsp; </span>
+        <span>trust is a design decision &nbsp;::&nbsp; break it before it ships &nbsp;::&nbsp; human-in-the-loop &gt; vibes &nbsp;::&nbsp; SELECT * FROM ambition WHERE limits IS NULL &nbsp;::&nbsp; </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= WRITING ================= -->
+  <section class="sec" id="writing" aria-label="Writing">
+    <div class="wrap">
+      <p class="kick"><i>SEC.04</i> :: FIELD NOTES</p>
+      <h2 class="giant glitch fill-acid" data-text="WRITING"><span class="g-base">WRITING</span><span class="g-fill" aria-hidden="true">WRITING</span></h2>
+      <div class="wl">
+        <a class="wl-item" data-rise href="https://ranjanm-security.medium.com/sniping-the-cloud-how-i-spammed-242-000-bots-to-crack-an-invisible-ci-cd-pipeline-4f72712d700f" target="_blank" rel="noopener">
+          <span class="wl-num">01</span>
+          <span class="wl-main">
+            <span class="wl-title" data-text="Sniping the Cloud: 242,000 Bots vs. an Invisible CI/CD Pipeline">Sniping the Cloud: 242,000 Bots vs. an Invisible CI/CD Pipeline</span>
+            <span class="wl-desc" style="display:block">Defeating a loose AWS CodeBuild webhook filter and chaining a poisoned-pipeline execution — the 15th-place Wiz writeup.</span>
+          </span>
+          <span class="wl-arrow">MEDIUM ↗</span>
+        </a>
+        <a class="wl-item" data-rise href="https://ranjanm-security.medium.com/beating-the-clock-exploiting-terraform-race-conditions-toctou-4ce92c310b68" target="_blank" rel="noopener">
+          <span class="wl-num">02</span>
+          <span class="wl-main">
+            <span class="wl-title" data-text="Beating the Clock: Exploiting Terraform Race Conditions (TOCTOU)">Beating the Clock: Exploiting Terraform Race Conditions (TOCTOU)</span>
+            <span class="wl-desc" style="display:block">A sticky-bit ownership race, a gRPC side-channel, and a staggered timing attack on Terraform provider loading.</span>
+          </span>
+          <span class="wl-arrow">MEDIUM ↗</span>
+        </a>
+        <a class="wl-item" data-rise href="https://ranjanm-security.medium.com/building-resilient-defense-a-blue-teams-guide-to-proactive-security-monitoring-72b315b224f4" target="_blank" rel="noopener">
+          <span class="wl-num">03</span>
+          <span class="wl-main">
+            <span class="wl-title" data-text="Building Resilient Defense: A Blue Team's Guide to Proactive Monitoring">Building Resilient Defense: A Blue Team's Guide to Proactive Monitoring</span>
+            <span class="wl-desc" style="display:block">Practical detection and monitoring strategy for real environments.</span>
+          </span>
+          <span class="wl-arrow">MEDIUM ↗</span>
+        </a>
+        <a class="wl-item" data-rise href="https://ranjanm-security.medium.com/5-blue-team-lessons-that-actually-work-in-real-environments-e87b6bc49008" target="_blank" rel="noopener">
+          <span class="wl-num">04</span>
+          <span class="wl-main">
+            <span class="wl-title" data-text="5 Blue Team Lessons That Actually Work in Real Environments">5 Blue Team Lessons That Actually Work in Real Environments</span>
+            <span class="wl-desc" style="display:block">Hard-won defensive lessons from hands-on security work.</span>
+          </span>
+          <span class="wl-arrow">MEDIUM ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section class="sec" id="experience" aria-label="Experience">
+    <div class="wrap">
+      <p class="kick"><i>SEC.05</i> :: TRACK RECORD</p>
+      <h2 class="giant glitch fill-mag" data-text="EXPERIENCE"><span class="g-base">EXPERIENCE</span><span class="g-fill" aria-hidden="true">EXPERIENCE</span></h2>
+
+      <div class="xp-table">
+        <div class="xp-row" data-rise>
+          <span class="xp-when">Mar 2026 — Present</span>
+          <div>
+            <p class="xp-role">Instructor — "CTF Strategies"</p>
+            <p class="xp-org">Forbes College</p>
+          </div>
+          <p class="xp-note">Designed and teaches a Capture-The-Flag course to undergraduates; President of the college cybersecurity club.</p>
+        </div>
+        <div class="xp-row" data-rise>
+          <span class="xp-when">Apr — Oct 2025</span>
+          <div>
+            <p class="xp-role">Associate Security Research Analyst</p>
+            <p class="xp-org">SecurityPal Inc.</p>
+          </div>
+          <p class="xp-note">GRC across FedRAMP, ISO 27001, and ISO/IEC 42001 (AI Management Systems); enterprise security questionnaire and vendor-risk assessment.</p>
+        </div>
+        <div class="xp-row" data-rise>
+          <span class="xp-when">Dec 2024 — Apr 2025</span>
+          <div>
+            <p class="xp-role">System Administrator Intern</p>
+            <p class="xp-org">BPKMCH Cancer Hospital</p>
+          </div>
+          <p class="xp-note">Virtualization, monitoring, and access-control systems in a critical healthcare environment; ran hospital IT solo during the lead admin's absence.</p>
+        </div>
+        <div class="xp-row" data-rise>
+          <span class="xp-when">2023 — Present</span>
+          <div>
+            <p class="xp-role">Independent AI &amp; Cloud Engineer</p>
+            <p class="xp-org">Freelance</p>
+          </div>
+          <p class="xp-note">Designs, builds, and operates LLM-agent systems and web applications end-to-end for clients — logic, deployment, backups, and support.</p>
+        </div>
+      </div>
+
+      <div class="edu-grid">
+        <div data-rise>
+          <p class="blk-label">Education</p>
+          <p class="edu-deg">B.Sc. Computer Science — Network Technology &amp; Cyber Security</p>
+          <p class="edu-line">University of Computer Sciences and Skills, Poland · via Forbes College<br>Jan 2022 – Dec 2025 · <b>CGPA 3.87 / 4.00</b> · 240 ECTS · "Distinction" standing across nearly all coursework</p>
+        </div>
+        <div data-rise>
+          <p class="blk-label">Certifications</p>
+          <ul class="certs">
+            <li>SC-900 (Security, Compliance &amp; Identity)</li>
+            <li>APIsec Certified Practitioner</li>
+            <li>CEH (EC-Council)</li>
+            <li>ISC2 Certified in Cybersecurity</li>
+            <li>AZ-900 (Azure Fundamentals)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section class="sec" id="skills" aria-label="Skills">
+    <div class="wrap">
+      <p class="kick"><i>SEC.06</i> :: LOADOUT</p>
+      <h2 class="giant glitch fill-acid" data-text="SKILLS"><span class="g-base">SKILLS</span><span class="g-fill" aria-hidden="true">SKILLS</span></h2>
+    </div>
+    <div class="tick-wrap" aria-hidden="true">
+      <div class="tick-track">
+        <span>ZERO TRUST <b>·</b> SIEM (WAZUH) <b>·</b> IDS/IPS (SNORT) <b>·</b> EDR <b>·</b> RBAC/LDAP <b>·</b> PFSENSE <b>·</b> CI/CD SECURITY <b>·</b> FORENSICS <b>·</b> GRC <b>·</b> AWS <b>·</b> PROXMOX <b>·</b> VMWARE <b>·</b> DOCKER <b>·</b> NGINX <b>·</b> ZABBIX <b>·</b> LLM AGENTS <b>·</b> RAG <b>·</b> PYTHON <b>·</b> TYPESCRIPT <b>·</b> MERN <b>·</b> DJANGO <b>·</b> LARAVEL <b>·</b> C/C++ <b>·</b> </span>
+        <span>ZERO TRUST <b>·</b> SIEM (WAZUH) <b>·</b> IDS/IPS (SNORT) <b>·</b> EDR <b>·</b> RBAC/LDAP <b>·</b> PFSENSE <b>·</b> CI/CD SECURITY <b>·</b> FORENSICS <b>·</b> GRC <b>·</b> AWS <b>·</b> PROXMOX <b>·</b> VMWARE <b>·</b> DOCKER <b>·</b> NGINX <b>·</b> ZABBIX <b>·</b> LLM AGENTS <b>·</b> RAG <b>·</b> PYTHON <b>·</b> TYPESCRIPT <b>·</b> MERN <b>·</b> DJANGO <b>·</b> LARAVEL <b>·</b> C/C++ <b>·</b> </span>
+        <span>ZERO TRUST <b>·</b> SIEM (WAZUH) <b>·</b> IDS/IPS (SNORT) <b>·</b> EDR <b>·</b> RBAC/LDAP <b>·</b> PFSENSE <b>·</b> CI/CD SECURITY <b>·</b> FORENSICS <b>·</b> GRC <b>·</b> AWS <b>·</b> PROXMOX <b>·</b> VMWARE <b>·</b> DOCKER <b>·</b> NGINX <b>·</b> ZABBIX <b>·</b> LLM AGENTS <b>·</b> RAG <b>·</b> PYTHON <b>·</b> TYPESCRIPT <b>·</b> MERN <b>·</b> DJANGO <b>·</b> LARAVEL <b>·</b> C/C++ <b>·</b> </span>
+        <span>ZERO TRUST <b>·</b> SIEM (WAZUH) <b>·</b> IDS/IPS (SNORT) <b>·</b> EDR <b>·</b> RBAC/LDAP <b>·</b> PFSENSE <b>·</b> CI/CD SECURITY <b>·</b> FORENSICS <b>·</b> GRC <b>·</b> AWS <b>·</b> PROXMOX <b>·</b> VMWARE <b>·</b> DOCKER <b>·</b> NGINX <b>·</b> ZABBIX <b>·</b> LLM AGENTS <b>·</b> RAG <b>·</b> PYTHON <b>·</b> TYPESCRIPT <b>·</b> MERN <b>·</b> DJANGO <b>·</b> LARAVEL <b>·</b> C/C++ <b>·</b> </span>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="skills-grid">
+        <div class="sk acc-a" data-rise>
+          <h3>Security</h3>
+          <p>Zero Trust, SIEM (Wazuh), IDS/IPS (Snort), EDR, RBAC/LDAP, pfSense, cloud &amp; CI/CD security, forensics, GRC (FedRAMP, ISO 27001, ISO 42001)</p>
+        </div>
+        <div class="sk acc-b" data-rise>
+          <h3>Cloud &amp; Infra</h3>
+          <p>AWS, Proxmox, VMware, Linux/VPS, Docker, Nginx microservices, Zabbix, systemd</p>
+        </div>
+        <div class="sk acc-a" data-rise>
+          <h3>AI &amp; Agents</h3>
+          <p>LLM agent systems, RAG design, multi-model orchestration, prompt engineering</p>
+        </div>
+        <div class="sk acc-b" data-rise>
+          <h3>Development</h3>
+          <p>Python, Java, JavaScript/TypeScript, MERN, Django, Laravel, C/C++</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="sec contact" id="contact" aria-label="Contact">
+    <div class="wrap">
+      <p class="kick"><i>SEC.07</i> :: HANDSHAKE</p>
+      <h2 class="giant glitch fill-mag" data-text="CONTACT"><span class="g-base">CONTACT</span><span class="g-fill" aria-hidden="true">CONTACT</span></h2>
+      <p class="contact-line">Got a system to <b>secure</b> — or one that needs breaking first? Currently building agents, teaching CTF, and auditing clouds from <b>Bharatpur, Chitwan, Nepal</b>.</p>
+      <a class="email-link glitch gh" id="emailLink" data-text="ranjanmarasini123@gmail.com" href="mailto:ranjanmarasini123@gmail.com">ranjanmarasini123@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/ranjan-marasini-434202182" target="_blank" rel="noopener">LINKEDIN ↗</a>
+        <a href="https://github.com/Rockerran21" target="_blank" rel="noopener">GITHUB ↗</a>
+        <a href="https://ranjanm-security.medium.com" target="_blank" rel="noopener">MEDIUM ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 <b>Ranjan Marasini</b> — Bharatpur, Chitwan, Nepal</span>
+      <span>alias <i>No0bInj3ct3d</i> · no tables were dropped in production</span>
+    </div>
+  </footer>
+
+</div><!-- /#page -->
+
+<!-- fixed overlays live outside #page so the screen-shake transform can't reposition them -->
+<nav class="nav" aria-label="Primary">
+  <span class="nav-alias"><span class="p">N0://</span><span class="alias-full">No0bInj3ct3d</span></span>
+  <div class="nav-links">
+    <a class="gh" href="#work" data-text="WORK">WORK</a>
+    <a class="gh" href="#writing" data-text="WRITING">WRITING</a>
+    <a class="gh" href="#experience" data-text="XP" >XP</a>
+    <a class="gh" href="#contact" data-text="CONTACT">CONTACT</a>
+  </div>
+</nav>
+<div class="scan" aria-hidden="true"></div>
+<div id="trail" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = (typeof window.gsap !== 'undefined') && (typeof window.ScrollTrigger !== 'undefined');
+  var root = document.documentElement;
+  root.classList.add(hasGsap ? 'gsap' : 'no-gsap');
+  if (reduced) root.classList.add('reduced');
+  if (hasGsap) window.gsap.registerPlugin(window.ScrollTrigger);
+
+  function $(s, c){ return (c || document).querySelector(s); }
+  function $$(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+
+  var GLYPHS = '!<>-_\\/[]{}=+*^?#$%&@01';
+
+  /* ---------- deliberate glitch bursts ---------- */
+  function fireGlitch(el, dur){
+    if (!el || el.classList.contains('glitch-on')) return;
+    el.classList.add('glitch-on');
+    window.setTimeout(function(){ el.classList.remove('glitch-on'); }, dur || 440);
+  }
+
+  /* ---------- decode / scramble ---------- */
+  function scramble(el, opts){
+    opts = opts || {};
+    return new Promise(function(resolve){
+      if (!el){ resolve(); return; }
+      var text = el.getAttribute('data-text') || el.textContent;
+      var perChar = opts.perChar || 3;
+      var hold = opts.hold || 10;
+      var delay = opts.delay || 0;
+      var total = delay + text.length * perChar + hold;
+      var frame = 0;
+      el.setAttribute('aria-label', text);
+      function tick(){
+        frame++;
+        var out = '';
+        for (var i = 0; i < text.length; i++){
+          var appear = delay + i * perChar;
+          var lock = appear + hold;
+          if (frame >= lock) out += text[i];
+          else if (frame >= appear) out += GLYPHS[(Math.random() * GLYPHS.length) | 0];
+          else out += ' ';
+        }
+        el.textContent = out;
+        if (frame < total) window.requestAnimationFrame(tick);
+        else { el.textContent = text; resolve(); }
+      }
+      window.requestAnimationFrame(tick);
+    });
+  }
+
+  /* ---------- screen shake ---------- */
+  var page = $('#page');
+  function shake(){
+    if (!page) return;
+    page.classList.remove('is-shaking');
+    void page.offsetWidth;
+    page.classList.add('is-shaking');
+  }
+  if (page){
+    page.addEventListener('animationend', function(e){
+      if (e.animationName === 'pageshake') page.classList.remove('is-shaking');
+    });
+  }
+
+  /* ---------- hero: decode, then stamp ---------- */
+  var hn1 = $('#hn1'), hn2 = $('#hn2');
+  if (!reduced && hn1 && hn2){
+    if (hasGsap) window.gsap.set(['#heroSub', '#heroTag', '#heroMeta', '#heroHint'], { autoAlpha: 0 });
+    Promise.all([
+      scramble(hn1, { perChar: 4, hold: 14 }),
+      scramble(hn2, { perChar: 4, hold: 14, delay: 10 })
+    ]).then(function(){
+      fireGlitch(hn1); fireGlitch(hn2);
+      if (hasGsap){
+        window.gsap.timeline()
+          .fromTo('#heroSub', { autoAlpha: 0, scale: 1.9 }, { autoAlpha: 1, scale: 1, duration: .32, ease: 'power4.in' })
+          .add(function(){ fireGlitch($('#heroSub'), 320); })
+          .fromTo('#heroTag', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: .55, ease: 'expo.out' }, '+=.05')
+          .fromTo('#heroMeta', { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: .55, ease: 'expo.out' }, '<.12')
+          .fromTo('#heroHint', { autoAlpha: 0 }, { autoAlpha: 1, duration: .6, ease: 'power2.out' }, '<.2');
+      }
+    });
+  }
+
+  /* ---------- scroll choreography ---------- */
+  if (hasGsap && !reduced){
+    var gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
+
+    /* outlined giants fill with color as you scroll past */
+    $$('.giant').forEach(function(g){
+      var fill = g.querySelector('.g-fill');
+      if (fill){
+        gsap.fromTo(fill,
+          { clipPath: 'inset(-6% 100% -6% 0%)' },
+          { clipPath: 'inset(-6% 0% -6% 0%)', ease: 'none',
+            scrollTrigger: { trigger: g, start: 'top 88%', end: 'top 25%', scrub: .4 } });
+      }
+      /* one glitch burst on section entry — then calm */
+      if (g.hasAttribute('data-text')){
+        ScrollTrigger.create({ trigger: g, start: 'top 80%', once: true,
+          onEnter: function(){ fireGlitch(g); } });
+      }
+    });
+
+    /* the #15 moment: slam + shake */
+    var rankNum = $('#rankNum'), rankWord = $('#rankWord'), rankSub = $('#rankSub'), rankKick = $('#rankKicker');
+    if (rankNum){
+      gsap.set([rankNum, rankWord, rankSub, rankKick], { autoAlpha: 0 });
+      ScrollTrigger.create({
+        trigger: '#rank', start: 'top 58%', once: true,
+        onEnter: function(){
+          gsap.timeline()
+            .fromTo(rankKick, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: .3, ease: 'expo.out' })
+            .fromTo(rankNum, { autoAlpha: 0, scale: 2.6 }, { autoAlpha: 1, scale: 1, duration: .45, ease: 'power4.in' }, '-=.05')
+            .add(function(){ shake(); fireGlitch(rankNum, 520); })
+            .fromTo(rankWord, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: .5, ease: 'expo.out' }, '+=.06')
+            .fromTo(rankSub, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: .55, ease: 'expo.out' }, '<.15');
+        }
+      });
+    }
+
+    /* quiet rises for rows and blocks */
+    $$('[data-rise]').forEach(function(el){
+      gsap.from(el, { autoAlpha: 0, y: 34, duration: .7, ease: 'expo.out',
+        scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+    });
+  }
+
+  /* ---------- contact email: occasional deliberate glitch ---------- */
+  var email = $('#emailLink');
+  if (email && !reduced && 'IntersectionObserver' in window){
+    var emailInView = false;
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ emailInView = e.isIntersecting; });
+    }).observe(email);
+    window.setInterval(function(){
+      if (emailInView && !document.hidden) fireGlitch(email);
+    }, 6500);
+  }
+
+  /* ---------- cursor trail: character scramble on fast movement (desktop only) ---------- */
+  var trailLayer = $('#trail');
+  var finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  if (trailLayer && finePointer && !reduced){
+    var TRAIL_CH = '01!<>_/#$%*+?';
+    var lastX = 0, lastY = 0, lastT = 0, live = 0;
+    function spawnCh(x, y){
+      live++;
+      var s = document.createElement('span');
+      s.className = 'tr-ch';
+      s.textContent = TRAIL_CH[(Math.random() * TRAIL_CH.length) | 0];
+      var r = Math.random();
+      s.style.color = r < .42 ? 'var(--acid)' : (r < .84 ? 'var(--mag)' : 'var(--ink)');
+      s.style.left = x + 'px';
+      s.style.top = y + 'px';
+      trailLayer.appendChild(s);
+      var flips = 2;
+      var iv = window.setInterval(function(){
+        s.textContent = TRAIL_CH[(Math.random() * TRAIL_CH.length) | 0];
+        if (--flips <= 0) window.clearInterval(iv);
+      }, 90);
+      window.requestAnimationFrame(function(){ s.classList.add('out'); });
+      window.setTimeout(function(){
+        window.clearInterval(iv);
+        if (s.parentNode) s.parentNode.removeChild(s);
+        live--;
+      }, 520);
+    }
+    window.addEventListener('mousemove', function(e){
+      var t = performance.now();
+      var dt = (t - lastT) || 16;
+      var dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
+      var speed = dist / dt;
+      lastX = e.clientX; lastY = e.clientY; lastT = t;
+      if (speed < 1.1 || dist < 26 || live > 20) return;
+      spawnCh(e.clientX, e.clientY);
+    }, { passive: true });
+  }
+})();
+</script>
+</body>
+</html>
