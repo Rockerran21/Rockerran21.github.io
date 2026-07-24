@@ -37,23 +37,22 @@
     opacity:0;transition:opacity .55s ease;background:#04060a}
   body.ready #frame{opacity:1}
 
-  /* unobtrusive, non-blocking cycle indicator (fades away on its own) */
-  #hint{position:fixed;left:14px;top:14px;z-index:3;pointer-events:none;
-    display:flex;align-items:center;gap:8px;
-    padding:7px 12px;border-radius:999px;
-    font-size:11.5px;letter-spacing:.3px;color:#bfe9d8;
-    background:rgba(4,8,12,.66);border:1px solid rgba(78,240,180,.28);
+  /* minimal, non-blocking design-number badge (this is the only overlay) */
+  #badge{position:fixed;left:14px;top:14px;z-index:3;pointer-events:none;
+    display:flex;align-items:center;gap:9px;
+    padding:7px 13px;border-radius:999px;
+    font-size:11.5px;letter-spacing:.4px;color:#cdeee0;
+    background:rgba(4,8,12,.62);border:1px solid rgba(78,240,180,.28);
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
     box-shadow:0 8px 26px -12px rgba(0,0,0,.8);
     opacity:0;transform:translateY(-6px);
-    transition:opacity .4s ease,transform .4s ease}
-  #hint.show{opacity:1;transform:none}
-  #hint .d{width:7px;height:7px;border-radius:50%;background:#4ef0b4;box-shadow:0 0 8px rgba(78,240,180,.8)}
-  #hint b{color:#eafff6;font-weight:600}
-  #hint .k{color:#7f8ea2}
+    transition:opacity .45s ease,transform .45s ease}
+  body.ready #badge{opacity:1;transform:none}
+  #badge .d{width:7px;height:7px;border-radius:50%;background:#4ef0b4;box-shadow:0 0 8px rgba(78,240,180,.8)}
+  #badge b{color:#eafff6;font-weight:600}
 
   @media (prefers-reduced-motion:reduce){
-    #loader,#frame,#hint{transition:none}
+    #loader,#frame,#badge{transition:none}
     #loader .dot{animation:none}
   }
 
@@ -64,13 +63,12 @@
 <body>
   <div id="loader" aria-hidden="true"><span class="dot"></span></div>
   <iframe id="frame" title="Ranjan Marasini — portfolio" allow="fullscreen"></iframe>
-  <div id="hint" role="status" aria-live="polite">
-    <span class="d"></span><span>Design <b id="hnum">1</b>/9</span>
-    <span class="k">· reload to cycle · <span id="hkeys">← →</span></span>
+  <div id="badge" role="status" aria-live="polite">
+    <span class="d"></span><span>Design <b id="bnum">1</b>/9</span>
   </div>
   <noscript>
     <div>
-      <p>This portfolio cycles through nine designs and needs JavaScript.</p>
+      <p>This portfolio shows a random design each visit and needs JavaScript.</p>
       <p style="margin-top:10px"><a href="./designs/">Browse all nine designs →</a></p>
     </div>
   </noscript>
@@ -84,53 +82,27 @@
     "08-voxel-world","09-signature"
   ];
   var TOTAL = ORDER.length;
-  var KEY = "rm_design_idx_v1";
+  var KEY = "rm_design_last_v2";
 
-  function readNextIndex(){
-    // First visit for this browser: start on a random design so different
-    // visitors land differently. After that, advance sequentially each reload.
-    try{
-      var raw = localStorage.getItem(KEY);
-      var idx = (raw === null)
-        ? Math.floor(Math.random() * TOTAL)
-        : (parseInt(raw, 10) + 1) % TOTAL;
-      if (isNaN(idx) || idx < 0) idx = 0;
-      localStorage.setItem(KEY, String(idx));
-      return idx;
-    }catch(e){
-      return Math.floor(Math.random() * TOTAL); // private mode / storage blocked
+  // Fully random on every load. We only remember the previous pick so a reload
+  // never lands on the same design twice in a row — every reload is a surprise.
+  function pick(){
+    var last = -1;
+    try{ last = parseInt(localStorage.getItem(KEY), 10); }catch(e){}
+    if (isNaN(last)) last = -1;
+    var i = Math.floor(Math.random() * TOTAL);
+    if (TOTAL > 1){
+      while (i === last) i = Math.floor(Math.random() * TOTAL);
     }
+    try{ localStorage.setItem(KEY, String(i)); }catch(e){}
+    return i;
   }
 
-  var idx = readNextIndex();
-
+  var idx    = pick();
   var frame  = document.getElementById("frame");
-  var loader = document.getElementById("loader");
-  var hint   = document.getElementById("hint");
-  var hnum   = document.getElementById("hnum");
-  var isTouch = matchMedia("(hover:none)").matches;
+  var bnum   = document.getElementById("bnum");
 
-  function label(){
-    hnum.textContent = String(idx + 1);
-    // On touch devices there is no keyboard; tell them the truth.
-    document.getElementById("hkeys").textContent = isTouch ? "tap ↻ or reload" : "← →";
-  }
-
-  function load(i){
-    idx = ((i % TOTAL) + TOTAL) % TOTAL;
-    try{ localStorage.setItem(KEY, String(idx)); }catch(e){}
-    document.body.classList.remove("ready");
-    frame.src = "./designs/" + ORDER[idx] + "/";
-    label();
-    showHint();
-  }
-
-  var hintTimer;
-  function showHint(){
-    hint.classList.add("show");
-    clearTimeout(hintTimer);
-    hintTimer = setTimeout(function(){ hint.classList.remove("show"); }, 5200);
-  }
+  bnum.textContent = String(idx + 1);
 
   frame.addEventListener("load", function(){
     document.body.classList.add("ready");
@@ -139,27 +111,9 @@
       var t = frame.contentDocument && frame.contentDocument.title;
       if (t) document.title = t;
     }catch(e){}
-    // Let keyboard shortcuts work even when focus is inside the design.
-    try{
-      var doc = frame.contentDocument;
-      if (doc) doc.addEventListener("keydown", onKey);
-    }catch(e){}
   });
 
-  function onKey(e){
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
-    var tag = e.target && e.target.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA" || (e.target && e.target.isContentEditable)) return;
-    if (e.key === "ArrowRight"){ e.preventDefault(); load(idx + 1); }
-    else if (e.key === "ArrowLeft"){ e.preventDefault(); load(idx - 1); }
-    else if (e.key === "g" || e.key === "G"){ e.preventDefault(); window.location.href = "./designs/"; }
-  }
-  window.addEventListener("keydown", onKey);
-
-  // Kick off
-  label();
   frame.src = "./designs/" + ORDER[idx] + "/";
-  showHint();
 
   // Safety: if a design is slow, reveal it anyway so we never sit on the loader.
   setTimeout(function(){ document.body.classList.add("ready"); }, 4000);
