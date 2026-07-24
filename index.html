@@ -50,6 +50,7 @@
     -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000,transparent 80%)}
   .spotlight{position:fixed;inset:0;z-index:-1;pointer-events:none;
     background:radial-gradient(640px circle at var(--mx) var(--my),var(--glow),transparent 60%)}
+  #net{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55}
   .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.032;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
@@ -75,7 +76,7 @@
 
   /* hero */
   .hero{padding:88px 24px 64px;position:relative}
-  .hero-grid{display:grid;gap:48px;align-items:center}
+  .hero-grid{display:grid;gap:48px;align-items:center;perspective:1200px}
   @media(min-width:920px){.hero-grid{grid-template-columns:1.25fr .95fr}}
   .status{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;
     font-family:'JetBrains Mono';color:var(--mut);border:1px solid var(--line2);border-radius:100px;
@@ -85,7 +86,9 @@
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(78,240,180,.5)}70%{box-shadow:0 0 0 8px rgba(78,240,180,0)}100%{box-shadow:0 0 0 0 rgba(78,240,180,0)}}
   h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(42px,7vw,74px);
     line-height:1.02;letter-spacing:-2.5px;margin-bottom:24px}
-  h1 .g{background:linear-gradient(120deg,var(--mint) 10%,var(--blue) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1 .g{background:linear-gradient(120deg,var(--mint),var(--blue),var(--violet),var(--mint));background-size:300% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 9s ease-in-out infinite}
+  @keyframes sheen{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
   .tag{font-size:clamp(17px,2.4vw,21px);font-weight:500;color:var(--mut);max-width:34ch;line-height:1.5}
   .tag .build{color:var(--mint);font-weight:600}
   .tag .break{color:var(--blue);font-weight:600}
@@ -103,7 +106,8 @@
   /* terminal card */
   .term{background:rgba(8,12,18,.85);border:1px solid var(--line2);border-radius:16px;overflow:hidden;
     box-shadow:0 30px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(78,240,180,.04),0 0 60px -20px rgba(78,240,180,.12);
-    backdrop-filter:blur(8px);font-family:'JetBrains Mono';font-size:12.5px;line-height:2}
+    backdrop-filter:blur(8px);font-family:'JetBrains Mono';font-size:12.5px;line-height:2;
+    transform-style:preserve-3d;will-change:transform;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
   .term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);
     background:rgba(255,255,255,.02)}
   .term-bar i{width:11px;height:11px;border-radius:50%;display:block}
@@ -149,7 +153,7 @@
   .lead .m{color:var(--mint)}
   .lead .bl{color:var(--blue)}
 
-  .grid{display:grid;gap:18px}
+  .grid{display:grid;gap:18px;perspective:1600px}
   @media(min-width:700px){.grid.two{grid-template-columns:1fr 1fr}}
 
   /* cards with gradient-border hover */
@@ -161,7 +165,7 @@
     -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
   .card::after{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;pointer-events:none;
     background:linear-gradient(90deg,transparent,rgba(78,240,180,.5),transparent);opacity:0;transition:opacity .3s}
-  .card:hover{transform:translateY(-4px);background:var(--panel2)}
+  .card:hover{transform:translateY(-4px) rotateX(1.6deg);background:var(--panel2)}
   .card:hover::before,.card:hover::after{opacity:1}
   .card h3{font-family:'Space Grotesk';font-size:18px;font-weight:600;margin-bottom:6px;letter-spacing:-.3px}
   .card .meta{font-family:'JetBrains Mono';font-size:11px;color:var(--dim);letter-spacing:.8px;
@@ -247,7 +251,9 @@
   .rv.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){
     .rv{opacity:1;transform:none;transition:none}
-    .blob,.b1,.b2,.b3,.pulse,.caret{animation:none}
+    .blob,.b1,.b2,.b3,.pulse,.caret,h1 .g{animation:none}
+    .term{transition:none}
+    #net{display:none}
     html{scroll-behavior:auto}
   }
 </style>
@@ -256,6 +262,7 @@
 <div class="bgfx"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grid-overlay"></div>
 <div class="spotlight" id="spot"></div>
+<canvas id="net" aria-hidden="true"></canvas>
 <div class="grain"></div>
 <div class="progress" id="progress"></div>
 
@@ -401,6 +408,77 @@
     var h=document.documentElement.scrollHeight-window.innerHeight;
     prog.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
   },{passive:true});
+  var noMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // particle network background
+  if(!noMotion){(function(){
+    var cv=document.getElementById('net'),cx=cv.getContext('2d');
+    var DPR=Math.min(window.devicePixelRatio||1,2),W,H,pts=[],mx=-9999,my=-9999;
+    function size(){W=window.innerWidth;H=window.innerHeight;
+      cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0);
+      var n=W<700?34:72;pts=[];
+      for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.4+.6});
+    }
+    size();window.addEventListener('resize',size);
+    window.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+    var LINK=130,MLINK=170;
+    function frame(){
+      cx.clearRect(0,0,W,H);
+      for(var i=0;i<pts.length;i++){
+        var p=pts[i];p.x+=p.vx;p.y+=p.vy;
+        if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;
+        if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;
+        for(var j=i+1;j<pts.length;j++){
+          var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=dx*dx+dy*dy;
+          if(d<LINK*LINK){var a=(1-Math.sqrt(d)/LINK)*.16;
+            cx.strokeStyle='rgba(102,181,255,'+a+')';cx.lineWidth=1;
+            cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke();}
+        }
+        var mdx=p.x-mx,mdy=p.y-my,md=mdx*mdx+mdy*mdy;
+        if(md<MLINK*MLINK){var ma=(1-Math.sqrt(md)/MLINK)*.35;
+          cx.strokeStyle='rgba(78,240,180,'+ma+')';cx.lineWidth=1;
+          cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(mx,my);cx.stroke();}
+        cx.fillStyle=md<MLINK*MLINK?'rgba(78,240,180,.75)':'rgba(148,163,184,.5)';
+        cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();}
+
+  // 3D tilt on terminal card
+  if(!noMotion){(function(){
+    var term=document.querySelector('.term'),zone=document.querySelector('.hero-grid');
+    if(!term||!zone)return;
+    zone.addEventListener('pointermove',function(e){
+      var r=term.getBoundingClientRect();
+      var px=(e.clientX-r.left-r.width/2)/(r.width/2);
+      var py=(e.clientY-r.top-r.height/2)/(r.height/2);
+      px=Math.max(-1.6,Math.min(1.6,px));py=Math.max(-1.6,Math.min(1.6,py));
+      term.style.transform='rotateY('+(px*5)+'deg) rotateX('+(-py*4)+'deg) translateZ(8px)';
+    });
+    zone.addEventListener('pointerleave',function(){term.style.transform=''});
+  })();}
+
+  // terminal typing animation
+  (function(){
+    var lns=Array.prototype.slice.call(document.querySelectorAll('.term-body .ln'));
+    if(!lns.length)return;
+    if(noMotion)return;
+    lns.forEach(function(l){l.style.visibility='hidden'});
+    function show(i){
+      if(i>=lns.length)return;
+      var l=lns[i];l.style.visibility='';
+      var c=l.querySelector('.c');
+      if(c){var full=c.textContent,j=0;c.textContent='';
+        var t=setInterval(function(){c.textContent=full.slice(0,++j);
+          if(j>=full.length){clearInterval(t);setTimeout(function(){show(i+1)},160)}},26);}
+      else setTimeout(function(){show(i+1)},200);
+    }
+    setTimeout(function(){show(0)},500);
+  })();
+
   // scroll reveal with stagger
   var io=new IntersectionObserver(function(es){
     es.forEach(function(en){
